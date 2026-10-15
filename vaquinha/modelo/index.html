@@ -19,61 +19,200 @@
 <section class="content"><div class="wrap two"><div class="story" id="historia"><span class="section-tag">Nossa história</span><h2>Por que sua ajuda é importante?</h2><div class="need"><strong>Por que precisamos de ajuda?</strong><p id="campaignNeed">Descreva aqui a necessidade desta arrecadação.</p></div><p id="campaignStory">Este espaço conta a história da campanha: quem será beneficiado, qual é a necessidade e de que forma as doações serão utilizadas. Compartilhe uma mensagem verdadeira e transparente, para que cada pessoa possa contribuir com confiança.</p><div class="values"><div class="value"><strong>♥ Solidariedade</strong><span>Todos podem fazer parte desta corrente do bem.</span></div><div class="value"><strong>✦ Transparência</strong><span>Informe a finalidade das contribuições de maneira clara.</span></div></div></div>
 <aside class="donation" id="doar"><span class="tag">✓ Contribuição direta por Pix</span><h2>Faça parte desta causa</h2><p>Copie a chave Pix abaixo, abra seu aplicativo bancário e faça uma doação do valor que desejar.</p><label class="pix-label" for="pixKey">Chave Pix para doação</label><div class="pix-value" id="pixKey" aria-live="polite">Chave Pix ainda não informada</div><button id="copyPix" class="primary full" type="button" disabled>⧉ Copiar chave Pix</button><p class="notice" id="pixHint">Este é um modelo. Configure a chave Pix antes de divulgar a campanha.</p><div class="info"><strong>Precisa conversar com o responsável?</strong><span>Entre em contato para tirar dúvidas sobre a campanha.</span></div><a class="secondary full" id="contactLink" href="#" aria-disabled="true">◉ Conversar pelo WhatsApp</a></aside></div>
 <div class="wrap"><section class="contact"><div><h3>Não pode doar agora? Compartilhe! ♥</h3><p>Você também pode ajudar enviando esta campanha para outras pessoas.</p></div><button type="button" class="secondary" id="shareBtn">↗ Compartilhar campanha</button></section>
-<details class="config" id="settings"><summary>Crie sua vaquinha</summary><p>Preencha os dados e gere um link exclusivo para compartilhar. A página compartilhada abrirá somente a campanha, sem formulário de edição. A imagem precisa estar disponível em uma URL HTTPS pública.</p><form id="editor"><div class="fields"><label class="wide">Nome / título da vaquinha<input name="title" maxlength="110" required placeholder="Ex.: Vamos ajudar esta família"></label><label class="wide">Apresentação da campanha<textarea name="intro" maxlength="450" required></textarea></label><label class="wide">Necessidade / motivo da arrecadação<textarea name="need" maxlength="900" required></textarea></label><label class="wide">História da campanha<textarea name="story" maxlength="2200" required></textarea></label><label class="wide">Imagem pública (URL HTTPS)<input name="image" type="url" placeholder="https://exemplo.com/foto.jpg"></label><label>Chave Pix<input name="pix" maxlength="180" required placeholder="CPF, CNPJ, e-mail, celular ou chave aleatória"></label><label>WhatsApp com DDD<input name="whatsapp" inputmode="tel" maxlength="25" required placeholder="Ex.: 62999999999"></label></div><button class="primary" type="submit">Gerar URL da minha vaquinha</button><p id="editStatus" role="status" class="demo-note"></p></form></details><div id="generated" class="generated hidden" aria-live="polite"><h3>Sua vaquinha está pronta para compartilhar</h3><p>Copie o endereço abaixo ou abra a página final. A URL contém os dados informados; não inclua informações sigilosas. Guarde o link para reutilizar.</p><input id="generatedUrl" readonly aria-label="URL da vaquinha"><div class="actions"><button class="primary" id="copyUrl" type="button">Copiar link</button><a id="openUrl" class="secondary" target="_blank" rel="noopener">Abrir minha vaquinha ↗</a></div></div><p class="demo-note">Doações são feitas diretamente pelo Pix no aplicativo bancário. Este serviço não recebe pagamentos nem armazena campanhas em um banco de dados. Links muito extensos podem não funcionar em todos os aplicativos.</p></div></section>
+<details class="config" id="settings"><summary>Crie sua vaquinha</summary><p>Preencha os dados e gere um link exclusivo para compartilhar. A página compartilhada abrirá somente a campanha, sem formulário de edição. A imagem precisa estar disponível em uma URL HTTPS pública.</p><form id="editor" method="post" onsubmit="return false;"><div class="fields"><label class="wide">Nome / título da vaquinha<input name="title" maxlength="110" required placeholder="Ex.: Vamos ajudar esta família"></label><label class="wide">Apresentação da campanha<textarea name="intro" maxlength="450" required></textarea></label><label class="wide">Necessidade / motivo da arrecadação<textarea name="need" maxlength="900" required></textarea></label><label class="wide">História da campanha<textarea name="story" maxlength="2200" required></textarea></label><label class="wide">Imagem pública (URL HTTPS)<input name="image" type="url" placeholder="https://exemplo.com/foto.jpg"></label><label>Chave Pix<input name="pix" maxlength="180" required placeholder="CPF, CNPJ, e-mail, celular ou chave aleatória"></label><label>WhatsApp com DDD<input name="whatsapp" inputmode="tel" maxlength="25" required placeholder="Ex.: 62999999999"></label></div><button class="primary" type="submit">Gerar URL da minha vaquinha</button><p id="editStatus" role="status" class="demo-note"></p></form></details><div id="generated" class="generated hidden" aria-live="polite"><h3>Sua vaquinha está pronta para compartilhar</h3><p>Copie o endereço abaixo ou abra a página final. A URL contém os dados informados; não inclua informações sigilosas. Guarde o link para reutilizar.</p><input id="generatedUrl" readonly aria-label="URL da vaquinha"><div class="actions"><button class="primary" id="copyUrl" type="button">Copiar link</button><a id="openUrl" class="secondary" target="_blank" rel="noopener">Abrir minha vaquinha ↗</a></div></div><p class="demo-note">Doações são feitas diretamente pelo Pix no aplicativo bancário. Este serviço não recebe pagamentos nem armazena campanhas em um banco de dados. Links muito extensos podem não funcionar em todos os aplicativos.</p></div></section>
 </main><section class="result-screen" id="resultScreen" role="dialog" aria-modal="true" aria-labelledby="resultTitle" hidden><div class="result-card"><div class="result-icon" aria-hidden="true">♥</div><span class="section-tag">Sua campanha solidária</span><h2 id="resultTitle">Sua vaquinha está pronta!</h2><p class="lead">Este é o endereço exclusivo da sua campanha. Copie, salve e compartilhe com as pessoas que desejam ajudar.</p><label class="url-label" for="finalLink">Link da sua campanha</label><input id="finalLink" readonly aria-label="Link exclusivo da campanha"><div class="result-actions"><button class="primary" id="finalCopy" type="button">⧉ Copiar link</button><a id="finalOpen" class="secondary" target="_blank" rel="noopener noreferrer">↗ Abrir campanha</a></div><button class="secondary full" type="button" id="finalShare">Compartilhar campanha</button><div class="result-warning" role="note"><strong>⚠ Atenção: guarde seu link!</strong>Não temos cadastro nem sistema de recuperação. Se você perder este endereço, não será possível recuperar sua campanha. Salve nos favoritos e envie para seu WhatsApp ou e-mail. O link contém todos os dados da campanha.</div><button class="back" id="backCreate" type="button">Voltar para editar os dados</button><div class="result-brand">Vaquinha Online · Desenvolvido por GEB Tecnologia</div></div></section>
 <footer class="footer"><div class="wrap">Vaquinha Online · Campanha Solidária <strong>│</strong> Desenvolvido por <a href="https://gebtecnologia.grupoeduardabispo.com.br/" target="_blank" rel="noopener noreferrer"><strong>Compass Rose Systems · GEB Tecnologia</strong></a></div></footer>
 <script>
 "use strict";
-// Campanhas públicas ficam codificadas na própria URL. Não existe cadastro nem banco de dados.
-const DEFAULT = {
- title:"Toda ajuda faz a diferença.",
- intro:"Uma pequena contribuição pode representar uma grande transformação.",
- need:"Explique aqui a necessidade da arrecadação.",
- story:"Conte sua história e como os recursos serão utilizados.",
- image:"",pix:"",whatsapp:""
-};
-const $=id=>document.getElementById(id);
-let current={...DEFAULT};
-function base64Encode(str){const bytes=new TextEncoder().encode(str);let binary="";for(let i=0;i<bytes.length;i+=8192)binary+=String.fromCharCode(...bytes.subarray(i,i+8192));return btoa(binary).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");}
-function base64Decode(str){const bin=atob(str.replace(/-/g,"+").replace(/_/g,"/"));return new TextDecoder("utf-8",{fatal:true}).decode(Uint8Array.from(bin,c=>c.charCodeAt(0)));}
-function apply(data){
- current={...data};
- $("campaignTitle").textContent=data.title||DEFAULT.title;
- $("campaignIntro").textContent=data.intro||DEFAULT.intro;
- $("campaignNeed").textContent=data.need||DEFAULT.need;
- $("campaignStory").textContent=data.story||DEFAULT.story;
- const img=$("campaignImage");const url=(data.image||"").trim();
- if(/^https:\/\//i.test(url)){img.src=url;img.classList.remove("hidden")}else{img.removeAttribute("src");img.classList.add("hidden")}
- img.onerror=()=>img.classList.add("hidden");
- const pix=(data.pix||"").trim();$("pixKey").textContent=pix||"Chave Pix ainda não informada";$("copyPix").disabled=!pix;
- $("pixHint").textContent=pix?"Confira o nome do destinatário antes de confirmar o Pix.":"Informe uma chave Pix para habilitar as doações.";
- const num=(data.whatsapp||"").replace(/\D/g,"");const ok=num.length>=10&&num.length<=13;
- $("contactLink").href=ok?"https://wa.me/"+(num.length<=11?"55":"")+num+"?text="+encodeURIComponent("Olá! Gostaria de saber mais sobre a vaquinha "+data.title+"."):"#";
- $("contactLink").setAttribute("aria-disabled",String(!ok));$("contactLink").style.pointerEvents=ok?"auto":"none";$("contactLink").style.opacity=ok?"1":".5";
- document.title=(data.title||"Crie sua vaquinha")+" | Vaquinha Online";
-}
-async function copyText(value){try{await navigator.clipboard.writeText(value);return true}catch(e){const t=document.createElement("textarea");t.value=value;t.style.position="fixed";t.style.opacity="0";document.body.append(t);t.select();const success=document.execCommand("copy");t.remove();return success}}
-$("copyPix").addEventListener("click",async()=>{if(!current.pix)return;if(await copyText(current.pix.trim())){const btn=$("copyPix");btn.textContent="✓ Chave copiada";setTimeout(()=>btn.textContent="⧉ Copiar chave Pix",2300)}else alert("Não foi possível copiar a chave Pix.")});
-$("editor").addEventListener("submit",e=>{
- e.preventDefault();const form=e.currentTarget;const data={};for(const key of ["title","intro","need","story","image","pix","whatsapp"])data[key]=form.elements[key].value.trim();
- const digits=data.whatsapp.replace(/\D/g,"");if(digits.length<10||digits.length>13){$("editStatus").textContent="Informe um WhatsApp válido com DDD.";return}
- if(data.image&&!/^https:\/\//i.test(data.image)){$("editStatus").textContent="A imagem deve ser uma URL pública iniciada por https://";return}
- const code=base64Encode(JSON.stringify(data));const url=location.origin+location.pathname+"#c="+code;
- apply(data);$("generatedUrl").value=url;$("openUrl").href=url;$("finalLink").value=url;$("finalOpen").href=url;$("resultScreen").hidden=false;document.body.classList.add("result-open");
- $("editStatus").textContent="Link gerado. A edição não estará disponível para quem abrir o endereço compartilhado.";
- $("finalCopy").focus();
-});
-$("beginCreate").addEventListener("click",()=>{$("settings").open=true;$("settings").scrollIntoView({behavior:"smooth",block:"start"});});
-$("finalCopy").addEventListener("click",async()=>{if(await copyText($("finalLink").value)){$("finalCopy").textContent="✓ Link copiado";setTimeout(()=>$("finalCopy").textContent="⧉ Copiar link",2200)}});
-$("finalShare").addEventListener("click",async()=>{const url=$("finalLink").value;try{if(navigator.share){await navigator.share({title:current.title,text:"Apoie esta campanha solidária",url});return}}catch(e){if(e.name==="AbortError")return}if(await copyText(url)){$("finalShare").textContent="✓ Link copiado";setTimeout(()=>$("finalShare").textContent="Compartilhar campanha",2200)}});
-$("backCreate").addEventListener("click",()=>{$("resultScreen").hidden=true;document.body.classList.remove("result-open");$("settings").open=true;$("settings").scrollIntoView({behavior:"smooth"});});
-$("copyUrl").addEventListener("click",async()=>{if(await copyText($("generatedUrl").value)){$("copyUrl").textContent="✓ Link copiado";setTimeout(()=>$("copyUrl").textContent="Copiar link",2200)}});
-$("shareBtn").addEventListener("click",async()=>{const data={title:current.title,text:"Conheça esta campanha solidária.",url:(!$("generated").classList.contains("hidden") ? $("generatedUrl").value : location.href)};if(navigator.share){try{await navigator.share(data);return}catch(e){if(e.name==="AbortError")return}}if(await copyText(data.url)){$("shareBtn").textContent="✓ Link copiado";setTimeout(()=>$("shareBtn").textContent="↗ Compartilhar campanha",2200)}});
-function start(){
- const match=location.hash.match(/^#c=([a-zA-Z0-9_-]+)$/);
- if(match){try{const data=JSON.parse(base64Decode(match[1]));if(!data||typeof data!=="object"||typeof data.title!=="string"||typeof data.pix!=="string"||typeof data.whatsapp!=="string")throw Error("Dados inválidos");for(const k of ["title","intro","need","story","image","pix","whatsapp"])if(typeof data[k]!=="string")data[k]="";apply(data);$("settings").remove();$("generated").remove();$("introModel").remove();$("resultScreen").remove();return}catch(e){$("editStatus").textContent="Não foi possível carregar os dados deste link. Crie uma nova vaquinha."}}
- }
- apply(DEFAULT);for(const key of ["title","intro","need","story","image","pix","whatsapp"])$("editor").elements[key].value=DEFAULT[key]||"";
-}
-start();
+(function () {
+  const byId = (id) => document.getElementById(id);
+  const fields = ["title", "intro", "need", "story", "image", "pix", "whatsapp"];
+  const defaults = {
+    title: "Toda ajuda faz a diferença.",
+    intro: "Uma pequena contribuição pode representar uma grande transformação.",
+    need: "Explique aqui a necessidade da arrecadação.",
+    story: "Conte sua história e como os recursos serão utilizados.",
+    image: "", pix: "", whatsapp: ""
+  };
+  let campaign = {...defaults};
+  let lastLink = "";
+
+  function encodeData(data) {
+    const bytes = new TextEncoder().encode(JSON.stringify(data));
+    let raw = "";
+    for (let i = 0; i < bytes.length; i += 8192)
+      raw += String.fromCharCode(...bytes.subarray(i, i + 8192));
+    return btoa(raw).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+  }
+  function decodeData(encoded) {
+    const b64 = encoded.replace(/-/g, "+").replace(/_/g, "/");
+    const bytes = Uint8Array.from(atob(b64), (c) => c.charCodeAt(0));
+    return JSON.parse(new TextDecoder("utf-8", {fatal: true}).decode(bytes));
+  }
+  function setCampaign(data) {
+    campaign = {...data};
+    byId("campaignTitle").textContent = data.title || defaults.title;
+    byId("campaignIntro").textContent = data.intro || defaults.intro;
+    byId("campaignNeed").textContent = data.need || defaults.need;
+    byId("campaignStory").textContent = data.story || defaults.story;
+    const picture = byId("campaignImage");
+    if (data.image && /^https:\/\//i.test(data.image)) {
+      picture.src = data.image;
+      picture.classList.remove("hidden");
+    } else {
+      picture.removeAttribute("src");
+      picture.classList.add("hidden");
+    }
+    picture.onerror = () => picture.classList.add("hidden");
+    byId("pixKey").textContent = data.pix || "Chave Pix ainda não informada";
+    byId("copyPix").disabled = !data.pix;
+    byId("pixHint").textContent = data.pix
+      ? "Confira o nome do destinatário antes de confirmar o Pix."
+      : "Informe uma chave Pix para habilitar as doações.";
+    const phone = (data.whatsapp || "").replace(/\D/g, "");
+    const valid = phone.length >= 10 && phone.length <= 13;
+    const whatsapp = byId("contactLink");
+    whatsapp.href = valid
+      ? "https://wa.me/" + (phone.length <= 11 ? "55" : "") + phone
+        + "?text=" + encodeURIComponent("Olá! Gostaria de saber mais sobre a campanha " + (data.title || "") + ".")
+      : "#";
+    whatsapp.setAttribute("aria-disabled", String(!valid));
+    whatsapp.style.pointerEvents = valid ? "auto" : "none";
+    whatsapp.style.opacity = valid ? "1" : ".5";
+    document.title = (data.title || "Crie sua vaquinha") + " | Vaquinha Online";
+  }
+  async function copy(value) {
+    try {
+      await navigator.clipboard.writeText(value);
+      return true;
+    } catch (_) {
+      const helper = document.createElement("textarea");
+      helper.value = value;
+      helper.style.cssText = "position:fixed;opacity:0;";
+      document.body.appendChild(helper);
+      helper.select();
+      const result = document.execCommand("copy");
+      helper.remove();
+      return result;
+    }
+  }
+  function showResult(url) {
+    lastLink = url;
+    byId("generatedUrl").value = url;
+    byId("openUrl").href = url;
+    byId("finalLink").value = url;
+    byId("finalOpen").href = url;
+    byId("resultScreen").hidden = false;
+    document.body.classList.add("result-open");
+    byId("finalCopy").focus();
+  }
+  function getFormData(form) {
+    const result = {};
+    for (const key of fields) {
+      const el = form.querySelector('[name="' + key + '"]');
+      if (!el) throw new Error("Campo obrigatório não encontrado: " + key);
+      result[key] = el.value.trim();
+    }
+    return result;
+  }
+  function create(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    const status = byId("editStatus");
+    try {
+      const data = getFormData(byId("editor"));
+      const digits = data.whatsapp.replace(/\D/g, "");
+      if (!data.title || !data.intro || !data.need || !data.story || !data.pix)
+        throw new Error("Preencha todos os campos obrigatórios.");
+      if (digits.length < 10 || digits.length > 13)
+        throw new Error("Informe um WhatsApp válido, incluindo o DDD.");
+      if (data.image && !/^https:\/\//i.test(data.image))
+        throw new Error("A imagem precisa ter um endereço HTTPS público.");
+      const url = location.origin + location.pathname + "#c=" + encodeData(data);
+      setCampaign(data);
+      showResult(url);
+      status.textContent = "Link exclusivo gerado com sucesso.";
+    } catch (error) {
+      status.textContent = error.message || "Não foi possível gerar seu link. Confira os dados.";
+    }
+    return false;
+  }
+  function initialize() {
+    const hash = location.hash;
+    const match = /^#c=([a-zA-Z0-9_-]+)$/.exec(hash);
+    if (match) {
+      try {
+        const data = decodeData(match[1]);
+        if (!data || typeof data !== "object" ||
+            !data.title || !data.pix || !data.whatsapp) throw new Error("Campanha inválida");
+        for (const key of fields) {
+          if (typeof data[key] !== "string") data[key] = "";
+        }
+        setCampaign(data);
+        byId("settings").remove();
+        byId("generated").remove();
+        byId("introModel").remove();
+        byId("resultScreen").remove();
+        return;
+      } catch (_) {
+        byId("editStatus").textContent = "O link informado não pôde ser aberto. Crie uma nova campanha.";
+      }
+    }
+    setCampaign(defaults);
+    for (const key of fields) {
+      byId("editor").querySelector('[name="' + key + '"]').value = defaults[key] || "";
+    }
+    byId("editor").addEventListener("submit", create, true);
+    byId("beginCreate").addEventListener("click", () => {
+      byId("settings").open = true;
+      byId("settings").scrollIntoView({behavior: "smooth", block: "start"});
+    });
+    byId("finalCopy").addEventListener("click", async () => {
+      if (await copy(lastLink)) {
+        byId("finalCopy").textContent = "✓ Link copiado";
+        setTimeout(() => byId("finalCopy").textContent = "⧉ Copiar link", 2300);
+      }
+    });
+    byId("finalShare").addEventListener("click", async () => {
+      try {
+        if (navigator.share) {
+          await navigator.share({title: campaign.title, text: "Apoie esta campanha solidária", url: lastLink});
+          return;
+        }
+      } catch (error) {
+        if (error.name === "AbortError") return;
+      }
+      if (await copy(lastLink)) {
+        byId("finalShare").textContent = "✓ Link copiado";
+        setTimeout(() => byId("finalShare").textContent = "Compartilhar campanha", 2300);
+      }
+    });
+    byId("backCreate").addEventListener("click", () => {
+      byId("resultScreen").hidden = true;
+      document.body.classList.remove("result-open");
+      byId("settings").open = true;
+      byId("settings").scrollIntoView({behavior: "smooth"});
+    });
+    byId("copyUrl").addEventListener("click", async () => {
+      if (await copy(lastLink)) byId("copyUrl").textContent = "✓ Link copiado";
+    });
+  }
+  byId("copyPix").addEventListener("click", async () => {
+    if (campaign.pix && await copy(campaign.pix)) {
+      byId("copyPix").textContent = "✓ Chave copiada";
+      setTimeout(() => byId("copyPix").textContent = "⧉ Copiar chave Pix", 2200);
+    }
+  });
+  byId("shareBtn").addEventListener("click", async () => {
+    const url = lastLink || location.href;
+    try {
+      if (navigator.share) {
+        await navigator.share({title: campaign.title, url});
+        return;
+      }
+    } catch (error) { if (error.name === "AbortError") return; }
+    if (await copy(url)) byId("shareBtn").textContent = "✓ Link copiado";
+  });
+  initialize();
+})();
 </script></body></html>

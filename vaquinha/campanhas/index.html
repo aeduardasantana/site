@@ -35,7 +35,7 @@ async function search(){
  st.textContent=items.length?items.length+' campanha(s) encontrada(s).'+(apiError?' A consulta das demais campanhas está temporariamente indisponível.':''):apiError?'Não foi possível consultar as demais campanhas agora. Tente novamente.':'Nenhuma campanha corresponde à pesquisa.';
 }
 document.getElementById('sharePlatform').addEventListener('click',async()=>{
- const text='Oi! Vi esse site e lembrei de você. Se algum dia precisar fazer uma vaquinha ou conhecer alguém que esteja organizando uma, acho que pode ajudar. Dá para criar uma página contando a história e compartilhar com as pessoas. Dá uma olhada:';
+ const text='Para quem precisa organizar uma vaquinha solidária, esse site pode ser útil. Dá para criar uma página contando a história e compartilhar o link com quem quiser ajudar. Fica a dica:';
  const url='https://site.compassrosesystems.com.br/vaquinha/campanhas/';
  const status=document.getElementById('sharePlatformStatus');
  if(navigator.share){try{await navigator.share({title:'Olha esse site de vaquinhas',text,url});status.textContent='Plataforma compartilhada!';return;}catch(e){if(e.name==='AbortError')return;}}

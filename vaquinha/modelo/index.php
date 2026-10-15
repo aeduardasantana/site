@@ -22,73 +22,248 @@ header('Cache-Control: no-store');
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#F7F4EC">
 <meta name="description" content="Uma contribuição pode transformar uma história. Conheça a campanha e faça sua doação por Pix.">
-<title>Vaquinha solidária | Modelo interno</title>
+<title>Crie sua vaquinha | Vaquinha Online</title>
 <style>
 :root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:#263B35;background:#F7F4EC}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0}button,input,textarea{font:inherit}button,a{ -webkit-tap-highlight-color:transparent}a{color:inherit}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}.top{border-bottom:1px solid #E0E7DB;background:#FCFCF8}.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:76px}.logo{display:flex;align-items:center;gap:12px;font-weight:850;letter-spacing:-.04em}.logo span{display:grid;place-items:center;border-radius:15px;background:#245C4A;color:white;width:42px;height:42px;font-size:23px}.top small{font-size:12px;color:#61776A;font-weight:700}.hero{padding:60px 0 38px;background:radial-gradient(circle at 95% 5%,#DAE8D8 0,transparent 46%),linear-gradient(150deg,#F7F4EC,#EAF2E9)}.hero-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(315px,.8fr);gap:56px;align-items:center}.eyebrow{display:inline-flex;align-items:center;gap:8px;border-radius:99px;background:#E1EBDD;color:#245C4A;font-size:12px;font-weight:800;padding:10px 14px;letter-spacing:.05em;text-transform:uppercase}.eyebrow:before{content:"";width:8px;height:8px;border-radius:50%;background:#D7B779}.hero h1{font-size:clamp(38px,5vw,64px);line-height:1.08;letter-spacing:-.06em;margin:22px 0}.hero p{font-size:18px;line-height:1.75;color:#5D6E66;max-width:620px}.primary,.secondary{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:52px;border-radius:13px;padding:13px 22px;font-weight:800;text-decoration:none;cursor:pointer;border:0;transition:transform .15s,background .15s}.primary{background:#245C4A;color:#fff}.primary:hover{background:#1B4638;transform:translateY(-1px)}.secondary{background:#fff;color:#245C4A;border:1px solid #BACFBD}.secondary:hover{background:#EDF4ED}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.art{position:relative;aspect-ratio:1.04;border-radius:34px;background:linear-gradient(145deg,#BFD5C1,#86AC96);display:grid;place-items:center;box-shadow:0 28px 60px #245C4A28;overflow:hidden}.art:before,.art:after{content:"";position:absolute;border:2px solid #ffffff68;border-radius:50%;width:420px;height:420px}.art:before{left:-220px;top:-230px}.art:after{right:-230px;bottom:-250px}.art .heart{font-size:clamp(100px,16vw,180px);filter:drop-shadow(0 16px 10px #1E4C3D35);transform:rotate(-10deg)}.art .note{position:absolute;left:24px;bottom:24px;right:24px;background:#ffffffed;border-radius:18px;padding:18px 20px;font-weight:750;color:#245C4A;line-height:1.4}.content{padding:62px 0 80px}.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,.9fr);gap:46px;align-items:start}.section-tag{font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:#51795F;font-weight:850}.content h2{font-size:clamp(27px,3.3vw,38px);letter-spacing:-.045em;line-height:1.15;margin:15px 0}.story p{color:#5D6E66;line-height:1.9;font-size:16px;white-space:pre-line}.values{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:30px 0}.value{padding:20px;border:1px solid #DDE7DB;border-radius:16px;background:#fff}.value strong{display:block;margin-bottom:7px}.value span{font-size:13px;line-height:1.5;color:#61776A}.donation{background:#fff;border:1px solid #DDE7DB;padding:30px;border-radius:25px;box-shadow:0 19px 55px #245C4A10;scroll-margin-top:25px}.donation .tag{display:inline-block;background:#E1EBDD;color:#245C4A;border-radius:99px;padding:8px 12px;font-size:12px;font-weight:800}.donation h2{font-size:29px;margin:16px 0 10px}.donation>p{font-size:14px;color:#61776A;line-height:1.6}.pix-label{display:block;font-size:13px;font-weight:800;margin:28px 0 10px}.pix-value{background:#F5F8F2;border:1px solid #D3E1D3;border-radius:12px;padding:15px;word-break:break-all;font-size:14px;color:#263B35;min-height:54px}.full{width:100%;margin-top:12px}.notice{font-size:12px;color:#61776A;line-height:1.6;margin:13px 0 0}.info{border-top:1px solid #DDE7DB;margin-top:24px;padding-top:20px;font-size:14px;color:#516B5D;line-height:1.8}.info strong{display:block;color:#263B35}.link{color:#245C4A;font-weight:800;text-decoration:none}.contact{margin-top:23px;border-radius:22px;padding:26px;background:#E9F1E7;display:flex;gap:20px;align-items:center;justify-content:space-between}.contact h3{margin:0 0 8px;font-size:20px}.contact p{margin:0;color:#61776A;font-size:14px;line-height:1.55}.footer{border-top:1px solid #DDE7DB;padding:27px 0 35px;color:#61776A;font-size:12px;text-align:center}.config{margin-top:32px;border:1px dashed #A8C4AF;border-radius:18px;padding:18px 22px;background:#FAFCF7}.config summary{cursor:pointer;font-size:14px;font-weight:800;color:#245C4A}.config p{font-size:13px;color:#61776A}.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.fields label{display:grid;gap:6px;font-size:12px;font-weight:750}.fields label.wide{grid-column:1/-1}.fields input,.fields textarea{min-width:0;width:100%;border:1px solid #D3E1D3;border-radius:10px;padding:12px;background:#fff;color:#263B35}.fields textarea{min-height:88px;resize:vertical}.config .primary{margin-top:16px}.demo-note{margin-top:13px;font-size:12px;color:#61776A}.hidden{display:none!important}:focus-visible{outline:3px solid #245C4A;outline-offset:3px}@media(max-width:800px){.hero{padding:35px 0}.hero-grid,.two{grid-template-columns:1fr;gap:25px}.art{aspect-ratio:1.5;max-height:350px}.content{padding:38px 0 60px}.hero h1{font-size:42px}.hero p{font-size:16px}.donation{padding:23px}.contact{align-items:stretch;flex-direction:column}.contact .secondary{width:100%}}@media(max-width:480px){.wrap{width:min(100% - 30px,1120px)}.top .wrap{min-height:65px}.top small{font-size:10px;text-align:right}.hero h1{font-size:37px}.art{aspect-ratio:1.1}.art .note{padding:12px;font-size:13px}.hero-actions,.hero-actions a{width:100%}.values,.fields{grid-template-columns:1fr}.fields label.wide{grid-column:auto}.donation h2{font-size:26px}}
-.art .campaign-image{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;z-index:1}.art:has(.campaign-image:not(.hidden)) .heart,.art:has(.campaign-image:not(.hidden)) .note{display:none}.need{padding:20px 22px;background:#E9F1E7;border-left:4px solid #245C4A;border-radius:13px;margin:25px 0}.need strong{display:block;color:#245C4A;margin-bottom:9px}.need p{margin:0!important;white-space:pre-line}@media(max-width:480px){.need{padding:17px}}
+.art .campaign-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}.art:has(.campaign-image:not(.hidden)) .heart,.art:has(.campaign-image:not(.hidden)) .note{display:none}.need{padding:18px 21px;border-left:4px solid #245C4A;background:#E9F1E7;border-radius:13px;margin:20px 0}.need strong{display:block;margin-bottom:8px}.need p{margin:0!important}.generated{padding:23px;border:1px solid #A8C4AF;border-radius:18px;background:#F5F8F2;margin:20px 0}.generated h3{margin:0 0 8px}.generated p{font-size:14px;line-height:1.6;color:#516B5D}.generated input{width:100%;min-width:0;padding:12px;border:1px solid #A8C4AF;border-radius:10px;color:#263B35;background:white}.generated .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}.config{margin-bottom:26px}.config summary{font-size:19px}.config .fields{margin-top:20px}
+.intro-model{background:#245C4A;color:white;padding:18px 0}.intro-model .wrap{display:flex;gap:20px;justify-content:space-between;align-items:center}.intro-model strong{display:block;font-size:20px}.intro-model p{margin:5px 0 0;color:#E1EBDD;font-size:14px;line-height:1.5}.intro-model .secondary{white-space:nowrap}.result-screen{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;overflow:hidden;background:radial-gradient(circle at 85% 5%,#C8DCC9 0%,transparent 44%),#F7F4EC;padding:18px}.result-card{width:min(100%,610px);max-height:calc(100dvh - 36px);overflow:auto;background:white;border:1px solid #D3E1D3;border-radius:25px;box-shadow:0 25px 80px #245C4A20;padding:clamp(22px,4vw,40px);text-align:center}.result-icon{display:grid;place-items:center;width:62px;height:62px;border-radius:20px;background:#E1EBDD;color:#245C4A;font-size:30px;margin:0 auto 14px}.result-card h2{font-size:clamp(25px,4vw,36px);line-height:1.12;letter-spacing:-.04em;margin:10px 0}.result-card .lead{color:#516B5D;font-size:15px;line-height:1.6}.result-card .url-label{display:block;font-size:12px;font-weight:800;text-align:left;margin:20px 0 8px}.result-card input{width:100%;min-width:0;padding:15px;border:1px solid #A8C4AF;border-radius:12px;color:#263B35;background:#F5F8F2;font-size:13px}.result-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}.result-actions a,.result-actions button{min-width:0}.result-warning{background:#FFF5DB;border:1px solid #E9D4A0;text-align:left;border-radius:15px;padding:15px;margin-top:18px;color:#554423;font-size:13px;line-height:1.55}.result-warning strong{display:block;margin-bottom:4px}.result-brand{font-size:11px;color:#61776A;margin-top:18px}.result-card .back{border:0;background:none;color:#245C4A;text-decoration:underline;font-weight:700;margin-top:12px;cursor:pointer}.result-screen[hidden]{display:none!important}body.result-open{overflow:hidden}@media(max-width:640px){.intro-model .wrap{flex-direction:column;align-items:stretch}.intro-model .secondary{width:100%}.result-actions{grid-template-columns:1fr}.result-card{padding:20px}.result-screen{padding:12px}.result-card{max-height:calc(100dvh - 24px)}}
 </style>
-<style>.poster-section{margin:30px 0 36px;padding:clamp(18px,3vw,32px);background:#fff;border:1px solid #dce7d9;border-radius:24px;box-shadow:0 10px 40px #245c4a0b}.poster-heading{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:22px}.poster-heading h2{margin:8px 0!important}.poster-heading p{margin:0;color:#61776a;line-height:1.6;font-size:14px}.poster-heading button{flex-shrink:0}.poster-section .primary:disabled{opacity:.5;cursor:wait}@media(max-width:700px){.poster-heading{align-items:stretch;flex-direction:column}.poster-heading button{width:100%}}</style></head>
+<style>.poster-section{margin:30px 0 36px;padding:clamp(18px,3vw,32px);background:#fff;border:1px solid #dce7d9;border-radius:24px;box-shadow:0 10px 40px #245c4a0b}.poster-heading{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:22px}.poster-heading h2{margin:8px 0!important}.poster-heading p{margin:0;color:#61776a;line-height:1.6;font-size:14px}.poster-heading button{flex-shrink:0}.poster-section .primary:disabled{opacity:.5;cursor:wait}@media(max-width:700px){.poster-heading{align-items:stretch;flex-direction:column}.poster-heading button{width:100%}}</style><style>
+/* Tela final: sem barra de rolagem dentro do cartão. */
+.result-screen{overflow-y:auto;align-items:center}
+.result-card{max-height:none;overflow:visible;padding:24px 30px;width:min(100%,680px)}
+.result-icon{width:52px;height:52px;font-size:25px;margin-bottom:10px}
+.result-card h2{margin:8px 0;font-size:clamp(25px,3.5vw,34px)}
+.result-card .lead{margin:10px 0;font-size:14px;line-height:1.5}
+.result-card .url-label{margin:14px 0 7px}
+.result-card input{padding:12px}
+.result-actions{margin:10px 0}
+.result-actions .primary,.result-actions .secondary,.result-card>.full{min-height:46px;padding:10px 14px}
+.result-warning{margin-top:12px;padding:12px 15px;line-height:1.45}
+.result-card .back{margin-top:10px}
+.result-brand{margin-top:10px}
+@media(max-width:640px){.result-screen{align-items:start}.result-card{padding:20px;max-height:none}}
+@media(max-height:730px){.result-screen{align-items:start}}
+.image-field{display:grid;gap:7px;min-width:0}.image-field-title{display:flex;align-items:center;gap:9px;font-size:12px;font-weight:750}.image-help{position:relative}.image-help summary{display:grid;place-items:center;width:23px;height:23px;border:1px solid #91b69d;border-radius:50%;background:#e1ebdd;color:#245c4a;font-size:14px;font-weight:850;cursor:pointer;list-style:none}.image-help summary::-webkit-details-marker{display:none}.image-help-content{position:absolute;z-index:20;top:30px;left:-175px;width:min(350px,calc(100vw - 52px));padding:17px;background:white;border:1px solid #a8c4af;border-radius:15px;box-shadow:0 14px 35px #245c4a26;font-size:13px;font-weight:400;line-height:1.55}.image-help-content p{margin:9px 0}.image-field small{color:#61776a;font-size:12px;font-weight:400}@media(max-width:480px){.image-help-content{left:auto;right:-8px;width:min(310px,calc(100vw - 56px))}}</style></head>
 <body>
 <header class="top"><div class="wrap"><div class="logo"><span aria-hidden="true">♥</span> Vaquinha solidária</div><small>Juntos fazemos a diferença</small></div></header>
-<main>
-<section class="hero"><div class="wrap hero-grid"><div><span class="eyebrow">Uma causa que merece apoio</span><h1 id="campaignTitle">Toda ajuda faz a diferença.</h1><p id="campaignIntro">Uma pequena contribuição pode representar uma grande transformação. Conheça esta história e participe desta corrente de solidariedade.</p><div class="hero-actions"><a class="primary" href="#doar">♥ Quero contribuir</a><a class="secondary" href="#historia">Conhecer a história →</a></div></div><div class="art" role="img" aria-label="Ilustração de um coração representando solidariedade"><img id="campaignImage" class="campaign-image hidden" alt="Imagem da campanha" loading="eager"><div class="heart" aria-hidden="true">♥</div><div class="note">Cada gesto de generosidade conta. Obrigado por fazer parte! ✨</div></div></div></section>
-<section class="content"><div class="wrap two"><div class="story" id="historia"><span class="section-tag">Nossa história</span><h2>Por que sua ajuda é importante?</h2><div class="need"><strong>Nossa necessidade</strong><p id="campaignNeed">Descreva aqui o motivo da arrecadação e como a contribuição será utilizada.</p></div><p id="campaignStory">Este espaço conta a história da campanha: quem será beneficiado, qual é a necessidade e de que forma as doações serão utilizadas. Compartilhe uma mensagem verdadeira e transparente, para que cada pessoa possa contribuir com confiança.</p><div class="values"><div class="value"><strong>♥ Solidariedade</strong><span>Todos podem fazer parte desta corrente do bem.</span></div><div class="value"><strong>✦ Transparência</strong><span>Informe a finalidade das contribuições de maneira clara.</span></div></div></div>
+<section class="intro-model" id="introModel"><div class="wrap"><div><strong>Modelo interno — criação gratuita</strong><p>Uso interno: preencha, visualize e gere o link sem cobrança.</p></div><button type="button" class="secondary" id="beginCreate">♥ Criar campanha gratuita</button></div></section>
+<main><section class="wrap" style="padding-top:20px"><div style="background:#e1ebdd;border:1px solid #a8c4af;border-radius:18px;padding:24px;color:#245c4a"><strong style="font-size:25px">Criador interno de campanhas — gratuito</strong><p>Versão funcional para uso interno: personalize, visualize e gere o endereço da campanha sem checkout.</p></div></section>
+<section class="hero"><div class="wrap hero-grid"><div><span class="eyebrow">Uma causa que merece apoio</span><h1 id="campaignTitle">Toda ajuda faz a diferença.</h1><p id="campaignIntro">Uma pequena contribuição pode representar uma grande transformação. Conheça esta história e participe desta corrente de solidariedade.</p><div class="hero-actions"><a class="primary" href="#doar">♥ Quero contribuir</a><a class="secondary" href="#historia">Conhecer a história →</a></div></div><div class="art" role="img" aria-label="Ilustração de um coração representando solidariedade"><img id="campaignImage" class="campaign-image hidden" alt="Imagem da campanha"><div class="heart" aria-hidden="true">♥</div><div class="note">Cada gesto de generosidade conta. Obrigado por fazer parte! ✨</div></div></div></section>
+<section class="content"><div class="wrap two"><div class="story" id="historia"><span class="section-tag">Nossa história</span><h2>Por que sua ajuda é importante?</h2><div class="need"><strong>Por que precisamos de ajuda?</strong><p id="campaignNeed">Descreva aqui a necessidade desta arrecadação.</p></div><p id="campaignStory">Este espaço conta a história da campanha: quem será beneficiado, qual é a necessidade e de que forma as doações serão utilizadas. Compartilhe uma mensagem verdadeira e transparente, para que cada pessoa possa contribuir com confiança.</p><div class="values"><div class="value"><strong>♥ Solidariedade</strong><span>Todos podem fazer parte desta corrente do bem.</span></div><div class="value"><strong>✦ Transparência</strong><span>Informe a finalidade das contribuições de maneira clara.</span></div></div></div>
 <aside class="donation" id="doar"><span class="tag">✓ Contribuição direta por Pix</span><h2>Faça parte desta causa</h2><p>Copie a chave Pix abaixo, abra seu aplicativo bancário e faça uma doação do valor que desejar.</p><label class="pix-label" for="pixKey">Chave Pix para doação</label><div class="pix-value" id="pixKey" aria-live="polite">Chave Pix ainda não informada</div><button id="copyPix" class="primary full" type="button" disabled>⧉ Copiar chave Pix</button><p class="notice" id="pixHint">Este é um modelo. Configure a chave Pix antes de divulgar a campanha.</p><div class="info"><strong>Precisa conversar com o responsável?</strong><span>Entre em contato para tirar dúvidas sobre a campanha.</span></div><a class="secondary full" id="contactLink" href="#" aria-disabled="true">◉ Conversar pelo WhatsApp</a></aside></div>
 <div class="wrap"><section class="contact"><div><h3>Não pode doar agora? Compartilhe! ♥</h3><p>Você também pode ajudar enviando esta campanha para outras pessoas.</p></div><button type="button" class="secondary" id="shareBtn">↗ Compartilhar campanha</button></section>
-<section class="poster-section" aria-labelledby="posterTitle"><div class="poster-heading"><div><span class="section-tag">Arte para divulgação</span><h2 id="posterTitle">Compartilhe a arte desta vaquinha</h2><p>Uma imagem pronta para publicar no WhatsApp, Instagram e outras redes. Os dados são os mesmos desta campanha.</p></div><button id="downloadPoster" class="primary" type="button">↓ Baixar arte em PNG</button></div><div id="posterPreview" aria-live="polite"></div></section></div></section>
-</main><footer class="footer"><div class="wrap">Vaquinha Online · Campanha Solidária <strong>│</strong> Desenvolvido por <a href="https://gebtecnologia.grupoeduardabispo.com.br/" target="_blank" rel="noopener noreferrer"><strong>Compass Rose Systems · GEB Tecnologia</strong></a></div></footer>
+<section class="poster-section" aria-labelledby="posterTitle"><div class="poster-heading"><div><span class="section-tag">Arte para divulgação</span><h2 id="posterTitle">Compartilhe a arte desta vaquinha</h2><p>Uma imagem pronta para publicar no WhatsApp, Instagram e outras redes. Os dados são os mesmos desta campanha.</p></div><button id="downloadPoster" class="primary" type="button">↓ Baixar arte em PNG</button></div><div id="posterPreview" aria-live="polite"></div></section><details class="config" id="settings"><summary>Crie sua campanha — uso interno gratuito</summary><p>Preencha os dados e gere um link exclusivo para compartilhar. A página compartilhada abrirá somente a campanha, sem formulário de edição. A imagem precisa estar disponível em uma URL HTTPS pública.</p><form id="editor" method="post" onsubmit="return false;"><div class="fields"><label class="wide">Nome / título da vaquinha<input name="title" maxlength="110" required placeholder="Ex.: Vamos ajudar esta família"></label><label class="wide">Apresentação da campanha<textarea name="intro" maxlength="450" required></textarea></label><label class="wide">Necessidade / motivo da arrecadação<textarea name="need" maxlength="900" required></textarea></label><label class="wide">História da campanha<textarea name="story" maxlength="2200" required></textarea></label><div class="wide image-field"><div class="image-field-title"><label for="campaignImageUrl">Imagem da campanha (link público HTTPS)</label><details class="image-help"><summary aria-label="Como adicionar uma imagem" title="Como adicionar uma imagem?">?</summary><div class="image-help-content"><strong>Como adicionar a imagem?</strong><p>1. Hospede a foto em um serviço que permita visualização pública.</p><p>2. Copie o endereço HTTPS da <strong>imagem propriamente dita</strong> e cole no campo.</p><p><strong>Google Drive:</strong> compartilhe o arquivo como “Qualquer pessoa com o link — Leitor”. Links comuns de compartilhamento nem sempre exibem a foto diretamente em sites externos.</p><p><strong>Google Fotos:</strong> links de álbuns ou de compartilhamento também podem não funcionar como imagem incorporada.</p><p>Prefira um link direto para uma imagem (.jpg, .png ou .webp) que abra sem login. Teste em janela anônima antes de divulgar.</p><p>Se não adicionar uma imagem, a campanha continuará exibindo a arte padrão.</p></div></details></div><input id="campaignImageUrl" name="image" type="url" placeholder="https://exemplo.com/foto.jpg" aria-describedby="imageTip"><small id="imageTip">Use uma URL pública de imagem. Toque no ? para saber como.</small></div><label>Chave Pix<input name="pix" maxlength="180" required placeholder="CPF, CNPJ, e-mail, celular ou chave aleatória"></label><label>WhatsApp com DDD<input name="whatsapp" inputmode="tel" maxlength="25" required placeholder="Ex.: 62999999999"></label></div><button class="primary" type="submit">Visualizar minha campanha gratuitamente</button><p id="editStatus" role="status" class="demo-note"></p></form></details><section id="paidPreview" hidden style="margin:22px 0;padding:24px;background:white;border:1px solid #d3e1d3;border-radius:22px">
+<h2>Confira sua campanha antes de gerar o link</h2><p>A página acima mostra o conteúdo que será compartilhado. Revise título, imagem, chave Pix e texto. Se precisar corrigir algo, edite os campos.</p>
+<p><strong>Publicação gratuita nesta área interna.</strong> As doações vão diretamente para o Pix informado.</p>
+<button id="approvePayment" type="button" class="primary full">Aprovar e gerar link gratuito</button></section><div id="generated" class="generated hidden" aria-live="polite"><h3>Sua vaquinha está pronta para compartilhar</h3><p>Copie o endereço abaixo ou abra a página final. A URL contém os dados informados; não inclua informações sigilosas. Guarde o link para reutilizar.</p><input id="generatedUrl" readonly aria-label="URL da vaquinha"><div class="actions"><button class="primary" id="copyUrl" type="button">Copiar link</button><a id="openUrl" class="secondary" target="_blank" rel="noopener">Abrir minha vaquinha ↗</a></div></div><p class="demo-note">Uso interno e gratuito. Salve o link para compartilhar, pois ele contém os dados da campanha.</p></div></section>
+</main><section class="result-screen" id="resultScreen" role="dialog" aria-modal="true" aria-labelledby="resultTitle" hidden><div class="result-card"><div class="result-icon" aria-hidden="true">♥</div><span class="section-tag">Sua campanha solidária</span><h2 id="resultTitle">Sua vaquinha está pronta!</h2><p class="lead">Este é o endereço exclusivo da sua campanha. Copie, salve e compartilhe com as pessoas que desejam ajudar.</p><label class="url-label" for="finalLink">Link da sua campanha</label><input id="finalLink" readonly aria-label="Link exclusivo da campanha"><div class="result-actions"><button class="primary" id="finalCopy" type="button">⧉ Copiar link</button><a id="finalOpen" class="secondary" target="_blank" rel="noopener noreferrer">↗ Abrir campanha</a></div><button class="secondary full" type="button" id="finalShare">Compartilhar campanha</button><div class="result-warning" role="note"><strong>⚠ Atenção: guarde seu link!</strong>Não temos cadastro nem sistema de recuperação. Se você perder este endereço, não será possível recuperar sua campanha. Salve nos favoritos e envie para seu WhatsApp ou e-mail. O link contém todos os dados da campanha.</div><button class="back" id="backCreate" type="button">Voltar para editar os dados</button><div class="result-brand">Vaquinha Online · Desenvolvido por GEB Tecnologia</div></div></section>
+<footer class="footer"><div class="wrap">Vaquinha Online · Campanha Solidária <strong>│</strong> Desenvolvido por <a href="https://gebtecnologia.grupoeduardabispo.com.br/" target="_blank" rel="noopener noreferrer"><strong>Compass Rose Systems · GEB Tecnologia</strong></a></div></footer>
 <script src="../arte.js"></script>
 <script>
 "use strict";
-// EDIÇÃO INTERNA: altere somente os dados abaixo para cada campanha.
-// Imagem: utilize um arquivo publicado (ex.: "./imagem.jpg") ou URL HTTPS autorizada.
-// Não publique dados bancários ou imagens sem autorização do responsável.
-const CAMPANHA = {
- title: "Toda ajuda faz a diferença.",
- intro: "Conheça esta campanha e saiba como contribuir com uma causa importante.",
- need: "Descreva aqui a necessidade e a finalidade específica das doações.",
- story: "Conte a história da pessoa ou da causa beneficiada, com clareza e transparência.",
- image: "", // Exemplo: "./imagem.jpg"
- imageAlt: "Imagem da campanha solidária",
- pix: "", // Chave Pix autorizada pelo beneficiário
- whatsapp: "" // DDD + telefone (ex.: 62999999999)
-};
-const $=id=>document.getElementById(id);
-let current={...CAMPANHA};
-function apply(data){
- current={...data};
- $("campaignTitle").textContent=data.title||CAMPANHA.title;
- $("campaignIntro").textContent=data.intro||CAMPANHA.intro;
- $("campaignStory").textContent=data.story||CAMPANHA.story;
- $("campaignNeed").textContent=data.need||CAMPANHA.need;
- const image=$("campaignImage");
- const imageSrc=(data.image||"").trim();
- if(imageSrc && (/^https:\/\//i.test(imageSrc)||/^\.\.?\//.test(imageSrc)||/^\/[^/]/.test(imageSrc))){image.src=imageSrc;image.alt=data.imageAlt||"Imagem da campanha";image.classList.remove("hidden");}else{image.removeAttribute("src");image.classList.add("hidden");}
- image.onerror=()=>{image.classList.add("hidden");};
- const pix=(data.pix||"").trim();
- $("pixKey").textContent=pix||"Chave Pix ainda não informada";
- $("copyPix").disabled=!pix;
- $("pixHint").textContent=pix?"Confira o nome do destinatário no aplicativo bancário antes de confirmar a transferência.":"Este é um modelo. Configure a chave Pix antes de divulgar a campanha.";
- const number=(data.whatsapp||"").replace(/\D/g,"");
- const valid=number.length>=10&&number.length<=13;
- $("contactLink").href=valid?"https://wa.me/"+(number.length<=11?"55":"")+number+"?text="+encodeURIComponent("Olá! Gostaria de saber mais sobre a vaquinha "+(data.title||"solidária")+"."):"#";
- $("contactLink").setAttribute("aria-disabled",String(!valid));
- $("contactLink").style.pointerEvents=valid?"auto":"none";
- $("contactLink").style.opacity=valid?"1":".5";
- document.title=(data.title||"Vaquinha solidária")+" | Vaquinha";
- if(window.posterWidget)window.posterWidget.refresh();
+(function () {
+  const byId = (id) => document.getElementById(id);
+  const fields = ["title", "intro", "need", "story", "image", "pix", "whatsapp"];
+  const defaults = {
+    title: "Toda ajuda faz a diferença.",
+    intro: "Uma pequena contribuição pode representar uma grande transformação.",
+    need: "Explique aqui a necessidade da arrecadação.",
+    story: "Conte sua história e como os recursos serão utilizados.",
+    image: "", pix: "", whatsapp: ""
+  };
+  let campaign = {...defaults};
+  let lastLink = "";
 
-}
-$("copyPix").addEventListener("click",async()=>{
- const value=(current.pix||"").trim();if(!value)return;
- try{await navigator.clipboard.writeText(value)}catch(e){
-   const field=document.createElement("textarea");field.value=value;field.style.position="fixed";field.style.opacity="0";document.body.append(field);field.select();
-   const ok=document.execCommand("copy");field.remove();if(!ok){alert("Não foi possível copiar. Selecione a chave Pix manualmente.");return;}
- }
- const btn=$("copyPix");btn.textContent="✓ Chave Pix copiada!";setTimeout(()=>btn.textContent="⧉ Copiar chave Pix",2400);
-});
-$("shareBtn").addEventListener("click",async()=>{const share={title:current.title,text:"Conheça esta campanha solidária e ajude a compartilhar.",url:location.href};if(navigator.share){try{await navigator.share(share);return}catch(e){if(e.name==="AbortError")return}}try{await navigator.clipboard.writeText(location.href);$("shareBtn").textContent="✓ Link copiado";setTimeout(()=>$("shareBtn").textContent="↗ Compartilhar campanha",2200)}catch(e){prompt("Copie o link da campanha:",location.href)}});
-window.posterWidget=window.GEBVaquinhaArte.attach({container:"posterPreview",button:"downloadPoster",getData:()=>current});
-apply(current);
-window.posterWidget.refresh();
+  function encodeData(data) {
+    const bytes = new TextEncoder().encode(JSON.stringify(data));
+    let raw = "";
+    for (let i = 0; i < bytes.length; i += 8192)
+      raw += String.fromCharCode(...bytes.subarray(i, i + 8192));
+    return btoa(raw).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+  }
+  function decodeData(encoded) {
+    const b64 = encoded.replace(/-/g, "+").replace(/_/g, "/");
+    const bytes = Uint8Array.from(atob(b64), (c) => c.charCodeAt(0));
+    return JSON.parse(new TextDecoder("utf-8", {fatal: true}).decode(bytes));
+  }
+  function setCampaign(data) {
+    campaign = {...data};
+    byId("campaignTitle").textContent = data.title || defaults.title;
+    byId("campaignIntro").textContent = data.intro || defaults.intro;
+    byId("campaignNeed").textContent = data.need || defaults.need;
+    byId("campaignStory").textContent = data.story || defaults.story;
+    const picture = byId("campaignImage");
+    if (data.image && /^https:\/\//i.test(data.image)) {
+      picture.src = data.image;
+      picture.classList.remove("hidden");
+    } else {
+      picture.removeAttribute("src");
+      picture.classList.add("hidden");
+    }
+    picture.onerror = () => picture.classList.add("hidden");
+    byId("pixKey").textContent = data.pix || "Chave Pix ainda não informada";
+    byId("copyPix").disabled = !data.pix;
+    byId("pixHint").textContent = data.pix
+      ? "Confira o nome do destinatário antes de confirmar o Pix."
+      : "Informe uma chave Pix para habilitar as doações.";
+    const phone = (data.whatsapp || "").replace(/\D/g, "");
+    const valid = phone.length >= 10 && phone.length <= 13;
+    const whatsapp = byId("contactLink");
+    whatsapp.href = valid
+      ? "https://wa.me/" + (phone.length <= 11 ? "55" : "") + phone
+        + "?text=" + encodeURIComponent("Olá! Gostaria de saber mais sobre a campanha " + (data.title || "") + ".")
+      : "#";
+    whatsapp.setAttribute("aria-disabled", String(!valid));
+    whatsapp.style.pointerEvents = valid ? "auto" : "none";
+    whatsapp.style.opacity = valid ? "1" : ".5";
+    document.title = (data.title || "Crie sua vaquinha") + " | Vaquinha Online";
+    if (window.posterWidget) window.posterWidget.refresh();
+  }
+  async function copy(value) {
+    try {
+      await navigator.clipboard.writeText(value);
+      return true;
+    } catch (_) {
+      const helper = document.createElement("textarea");
+      helper.value = value;
+      helper.style.cssText = "position:fixed;opacity:0;";
+      document.body.appendChild(helper);
+      helper.select();
+      const result = document.execCommand("copy");
+      helper.remove();
+      return result;
+    }
+  }
+  function showResult(url) {
+    lastLink = url;
+    byId("generatedUrl").value = url;
+    byId("openUrl").href = url;
+    byId("finalLink").value = url;
+    byId("finalOpen").href = url;
+    byId("resultScreen").hidden = false;
+    document.body.classList.add("result-open");
+    byId("finalCopy").focus();
+  }
+  function getFormData(form) {
+    const result = {};
+    for (const key of fields) {
+      const el = form.querySelector('[name="' + key + '"]');
+      if (!el) throw new Error("Campo obrigatório não encontrado: " + key);
+      result[key] = el.value.trim();
+    }
+    return result;
+  }
+  async function create(e) {
+    e.preventDefault();e.stopImmediatePropagation();
+    const status=byId("editStatus");
+    try {
+      const data=getFormData(byId("editor"));
+      if(!data.title||!data.intro||!data.need||!data.story||!data.pix)throw Error("Preencha os campos obrigatórios.");
+      if(!/^\d{10,13}$/.test(data.whatsapp.replace(/\D/g,"")))throw Error("Informe o WhatsApp com DDD.");
+      if(data.image&&!/^https:\/\//i.test(data.image))throw Error("Imagem pública deve usar HTTPS.");
+      setCampaign(data);
+      const preview=document.getElementById("paidPreview");
+      if(preview){preview.hidden=false;preview.scrollIntoView({behavior:"smooth",block:"start"});}
+      status.textContent="Pré-visualização pronta. Confira os dados e aprove o pagamento.";
+    } catch(error){status.textContent=error.message||"Confira os dados informados.";}
+    return false;
+  }
+  async function payCampaign(){
+    const data=getFormData(byId("editor"));
+    const url=location.origin+"/vaquinha/modelo/#c="+encodeData(data);
+    setCampaign(data);showResult(url);
+  }
+  function initialize() {
+    const campaignId=new URLSearchParams(location.search).get("campanha");
+    if(campaignId){
+      document.querySelector("main").style.visibility="hidden";
+      fetch("/api/infinitepay/index.php?action=campaign&id="+encodeURIComponent(campaignId))
+        .then(r=>{if(!r.ok)throw Error("Campanha não disponível ou pagamento não confirmado.");return r.json();})
+        .then(({data})=>{setCampaign(data);["settings","generated","introModel","resultScreen"].forEach(id=>byId(id)?.remove());document.querySelector("main").style.visibility="visible";})
+        .catch(()=>{document.querySelector("main").style.visibility="visible";document.querySelector("main").innerHTML="<div class='wrap'><h1>Campanha indisponível</h1><p>Verifique o endereço e a confirmação do pagamento.</p></div>";});
+      return;
+    }
+    byId("approvePayment").addEventListener("click",payCampaign);
+    byId("editor").addEventListener("input",()=>{const preview=byId("paidPreview");if(preview)preview.hidden=true;});
+
+    const hash = location.hash;
+    const match = /^#c=([a-zA-Z0-9_-]+)$/.exec(hash);
+    if (match) {
+      try {
+        const data = decodeData(match[1]);
+        if (!data || typeof data !== "object" ||
+            !data.title || !data.pix || !data.whatsapp) throw new Error("Campanha inválida");
+        for (const key of fields) {
+          if (typeof data[key] !== "string") data[key] = "";
+        }
+        setCampaign(data);
+        byId("settings").remove();
+        byId("generated").remove();
+        byId("introModel").remove();
+        byId("resultScreen").remove();
+        return;
+      } catch (_) {
+        byId("editStatus").textContent = "O link informado não pôde ser aberto. Crie uma nova campanha.";
+      }
+    }
+    setCampaign(defaults);
+    for (const key of fields) {
+      byId("editor").querySelector('[name="' + key + '"]').value = defaults[key] || "";
+    }
+    byId("editor").addEventListener("submit", create, true);
+    byId("beginCreate").addEventListener("click", () => {
+      byId("settings").open = true;
+      byId("settings").scrollIntoView({behavior: "smooth", block: "start"});
+    });
+    byId("finalCopy").addEventListener("click", async () => {
+      if (await copy(lastLink)) {
+        byId("finalCopy").textContent = "✓ Link copiado";
+        setTimeout(() => byId("finalCopy").textContent = "⧉ Copiar link", 2300);
+      }
+    });
+    byId("finalShare").addEventListener("click", async () => {
+      try {
+        if (navigator.share) {
+          await navigator.share({title: campaign.title, text: "Apoie esta campanha solidária", url: lastLink});
+          return;
+        }
+      } catch (error) {
+        if (error.name === "AbortError") return;
+      }
+      if (await copy(lastLink)) {
+        byId("finalShare").textContent = "✓ Link copiado";
+        setTimeout(() => byId("finalShare").textContent = "Compartilhar campanha", 2300);
+      }
+    });
+    byId("backCreate").addEventListener("click", () => {
+      byId("resultScreen").hidden = true;
+      document.body.classList.remove("result-open");
+      byId("settings").open = true;
+      byId("settings").scrollIntoView({behavior: "smooth"});
+    });
+    byId("copyUrl").addEventListener("click", async () => {
+      if (await copy(lastLink)) byId("copyUrl").textContent = "✓ Link copiado";
+    });
+  }
+  byId("copyPix").addEventListener("click", async () => {
+    if (campaign.pix && await copy(campaign.pix)) {
+      byId("copyPix").textContent = "✓ Chave copiada";
+      setTimeout(() => byId("copyPix").textContent = "⧉ Copiar chave Pix", 2200);
+    }
+  });
+  byId("shareBtn").addEventListener("click", async () => {
+    const url = lastLink || location.href;
+    try {
+      if (navigator.share) {
+        await navigator.share({title: campaign.title, url});
+        return;
+      }
+    } catch (error) { if (error.name === "AbortError") return; }
+    if (await copy(url)) byId("shareBtn").textContent = "✓ Link copiado";
+  });
+  window.posterWidget = window.GEBVaquinhaArte.attach({container:"posterPreview",button:"downloadPoster",getData:()=>campaign});
+  initialize();
+  window.posterWidget.refresh();
+})();
 </script></body></html>

@@ -61,7 +61,7 @@ $("editor").addEventListener("submit",e=>{
  $("generated").scrollIntoView({behavior:"smooth",block:"center"});
 });
 $("copyUrl").addEventListener("click",async()=>{if(await copyText($("generatedUrl").value)){$("copyUrl").textContent="✓ Link copiado";setTimeout(()=>$("copyUrl").textContent="Copiar link",2200)}});
-$("shareBtn").addEventListener("click",async()=>{const data={title:current.title,text:"Conheça esta campanha solidária.",url:location.href};if(navigator.share){try{await navigator.share(data);return}catch(e){if(e.name==="AbortError")return}}if(await copyText(location.href)){$("shareBtn").textContent="✓ Link copiado";setTimeout(()=>$("shareBtn").textContent="↗ Compartilhar campanha",2200)}});
+$("shareBtn").addEventListener("click",async()=>{const data={title:current.title,text:"Conheça esta campanha solidária.",url:(!$("generated").classList.contains("hidden") ? $("generatedUrl").value : location.href)};if(navigator.share){try{await navigator.share(data);return}catch(e){if(e.name==="AbortError")return}}if(await copyText(data.url)){$("shareBtn").textContent="✓ Link copiado";setTimeout(()=>$("shareBtn").textContent="↗ Compartilhar campanha",2200)}});
 function start(){
  const match=location.hash.match(/^#c=([a-zA-Z0-9_-]+)$/);
  if(match){try{const data=JSON.parse(base64Decode(match[1]));if(!data||typeof data!=="object"||typeof data.title!=="string"||typeof data.pix!=="string"||typeof data.whatsapp!=="string")throw Error("Dados inválidos");for(const k of ["title","intro","need","story","image","pix","whatsapp"])if(typeof data[k]!=="string")data[k]="";apply(data);$("settings").remove();$("generated").remove();return}catch(e){$("editStatus").textContent="Não foi possível carregar os dados deste link. Crie uma nova vaquinha."}}

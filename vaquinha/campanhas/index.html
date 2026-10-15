@@ -35,10 +35,10 @@ async function search(){
  st.textContent=items.length?items.length+' campanha(s) encontrada(s).'+(apiError?' A consulta das demais campanhas está temporariamente indisponível.':''):apiError?'Não foi possível consultar as demais campanhas agora. Tente novamente.':'Nenhuma campanha corresponde à pesquisa.';
 }
 document.getElementById('sharePlatform').addEventListener('click',async()=>{
- const text='Se você ou alguém que conhece precisa criar uma campanha solidária, conheça a Vaquinha Online! É uma plataforma prática para divulgar sua causa com uma página personalizada, arte para compartilhamento e contribuições diretamente via Pix. Você pode visualizar gratuitamente antes de publicar por R$ 10,00, em pagamento único. Conheça:';
+ const text='Oi! Vi esse site e lembrei de você. Se algum dia precisar fazer uma vaquinha ou conhecer alguém que esteja organizando uma, acho que pode ajudar. Dá para criar uma página contando a história e compartilhar com as pessoas. Dá uma olhada:';
  const url='https://site.compassrosesystems.com.br/vaquinha/campanhas/';
  const status=document.getElementById('sharePlatformStatus');
- if(navigator.share){try{await navigator.share({title:'Vaquinha Online — crie e divulgue uma campanha solidária',text,url});status.textContent='Plataforma compartilhada!';return;}catch(e){if(e.name==='AbortError')return;}}
+ if(navigator.share){try{await navigator.share({title:'Olha esse site de vaquinhas',text,url});status.textContent='Plataforma compartilhada!';return;}catch(e){if(e.name==='AbortError')return;}}
  try{await navigator.clipboard.writeText(text+'\n'+url);status.textContent='✓ Mensagem e link copiados. Agora é só compartilhar!';}
  catch(e){const w=window.prompt('Copie a mensagem para compartilhar:',text+'\n'+url);status.textContent=w===null?'':'Copie a mensagem e compartilhe com quem precisar.';}
 });

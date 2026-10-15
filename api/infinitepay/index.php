@@ -65,18 +65,18 @@ if($action==='listing'){
  $result=[];
  foreach(glob($dir.'/*.json')?:[] as $file){
    $v=json_decode((string)file_get_contents($file),true);
-   if(!is_array($v)||($v['paid']??false)!==true||($v['listing']??null)!==true)continue;
+   if(!is_array($v)||!(($v['paid']??false)===true||($v['internal']??false)===true)||($v['listing']??null)!==true)continue;
    $d=$v['data']??[];$title=(string)($d['title']??'');$intro=(string)($d['intro']??'');
    $hay=mb_strtolower($title.' '.$intro.' '.(string)($d['need']??'').' '.(string)($d['story']??''));
    if($term!==''&&mb_strpos($hay,$term)===false)continue;
-   $result[]=['id'=>basename($file,'.json'),'title'=>$title,'intro'=>mb_substr($intro,0,220),'image'=>(string)($d['image']??''),'created'=>(int)($v['created']??0)];
+   $result[]=['id'=>basename($file,'.json'),'title'=>$title,'intro'=>mb_substr($intro,0,220),'image'=>(string)($d['image']??''),'created'=>(int)($v['created']??0),'url'=>'/vaquinha/minhacampanha/?campanha='.basename($file,'.json')];
  }
  usort($result,fn($a,$b)=>$b['created']<=>$a['created']);
  respond(['campaigns'=>array_slice($result,0,100)]);
 }
 if($action==='campaign'){
  $o=loadorder((string)($_GET['id']??''));
- if(($o['paid']??false)!==true)respond(['error'=>'Campanha indisponível'],404);
- respond(['data'=>$o['data']]);
+ if(($o['paid']??false)!==true&&($o['internal']??false)!==true)respond(['error'=>'Campanha indisponível'],404);
+ respond(['data'=>$o['data'],'created'=>(int)($o['created']??0)]);
 }
 respond(['error'=>'Operação desconhecida'],404);

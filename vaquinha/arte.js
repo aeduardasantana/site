@@ -14,32 +14,32 @@ function drawPoster(c,data,img){
 c.clearRect(0,0,W,H);c.fillStyle="#fffefa";c.fillRect(0,0,W,H);
 const shine=c.createRadialGradient(580,640,80,580,640,790);shine.addColorStop(0,"#ffffff");shine.addColorStop(1,"#f6f7ed");c.fillStyle=shine;c.fillRect(0,0,W,H);
 waves(c);footerWaves(c);
-line(c,561,72,"VAQUINHA",106,green,950);
-line(c,561,170,"SOLIDÁRIA",104,sage,950);
+line(c,561,72,"VAQUINHA",106,green,950);line(c,561,170,"SOLIDÁRIA",104,sage,950);
 for(const [x,y,a] of [[238,100,-1],[231,150,1],[878,102,1],[891,155,-1]]){c.save();c.translate(x,y);c.rotate(a*.36);round(c,-9,-25,18,50,10,"#f5aa29");c.restore()}
-round(c,175,230,770,110,27,"#dce6ce");
-line(c,560,254,"TÍTULO DA VAQUINHA",27,green,900);
-round(c,193,270,734,59,19,"white","#e0e6d4",2);
-const title=(data.title||"TÍTULO DA CAMPANHA").trim();let ts=fit(c,title,686,32);let titleLines=wrap(c,title,688,2,ts,800);titleLines.forEach((v,i)=>line(c,560,300+(i-(titleLines.length-1)/2)*25,v,ts,green,800));
-round(c,287,352,536,348,27,"#ffffff","#f5f5ee",10);
-c.save();c.beginPath();c.roundRect(307,370,496,311,18);c.clip();if(img){const ratio=Math.max(496/img.width,311/img.height);const dw=img.width*ratio,dh=img.height*ratio;c.drawImage(img,307+(496-dw)/2,370+(311-dh)/2,dw,dh)}else{const lg=c.createLinearGradient(307,370,803,680);lg.addColorStop(0,"#e3ebef");lg.addColorStop(1,"#d5e0e4");c.fillStyle=lg;c.fillRect(307,370,496,311);c.fillStyle="#9eafa7";c.beginPath();c.arc(605,456,29,0,Math.PI*2);c.fill();c.beginPath();c.moveTo(432,555);c.lineTo(492,478);c.quadraticCurveTo(504,463,519,480);c.lineTo(563,525);c.quadraticCurveTo(579,540,591,527);c.lineTo(615,507);c.quadraticCurveTo(627,497,641,515);c.lineTo(676,558);c.closePath();c.fill();line(c,555,603,"A SUA AJUDA FAZ",31,"#365b45",850);line(c,555,644,"A DIFERENÇA!",36,"#365b45",900)}c.restore();
-heart(c,203,471,2.2,"#315b3a",true);heart(c,950,428,1.65,gold);heart(c,884,511,1.5,gold);
-round(c,130,724,440,62,29,"#dce6cc");line(c,347,752,"NECESSIDADE / RESUMO",29,green,900);
-round(c,130,759,860,198,23,"#ffffff","#d1d5ab",2);
-textBlock(c,data.need||data.intro||"Descreva a necessidade da campanha.",155,800,804,5,29,34,600,"#365044");
-round(c,130,970,860,111,23,"#ffffff","#e2d1ac",2);
-round(c,147,977,95,95,47,"#2c5932");
-line(c,195,1025,"◆",64,"#ffffff",800);
-line(c,300,996,"CHAVE PIX",25,green,900,"left");
-round(c,298,1017,664,49,14,"#ffffff","#dfe3d9",2);
-const pix=(data.pix||"CHAVE PIX DA CAMPANHA").trim();textBlock(c,pix,315,1041,625,1,fit(c,pix,622,23,650),27,650,"#314b3b");
-round(c,130,1090,860,111,23,"#ffffff","#e2d1ac",2);
-round(c,147,1099,95,95,47,"#2c5932");line(c,195,1147,"☎",55,"#ffffff",800);
-line(c,300,1118,"WHATSAPP",25,green,900,"left");
-round(c,298,1138,664,49,14,"#ffffff","#dfe3d9",2);
-textBlock(c,data.whatsapp||"WHATSAPP PARA CONTATO",315,1162,625,1,24,28,650,"#314b3b");
-const grad=c.createLinearGradient(180,0,942,0);grad.addColorStop(0,"#efb03c");grad.addColorStop(1,"#cf891b");round(c,179,1220,765,102,55,grad);heart(c,290,1270,1.45,"#ffffff");line(c,625,1272,"DOE E COMPARTILHE",46,"#ffffff",900);
-line(c,561,1367,"Feito por GEB Tecnologia",21,"#365a49",500);
+const title=(data.title||"Ajude esta campanha").trim();
+const ts=fit(c,title,930,42,900),titleLines=wrap(c,title,930,2,ts,900);
+titleLines.forEach((v,i)=>line(c,561,253+(i-(titleLines.length-1)/2)*46,v,ts,green,900));
+round(c,248,320,626,356,28,"#ffffff","#f2f2e8",9);
+c.save();c.beginPath();c.roundRect(263,335,596,325,20);c.clip();
+if(img){const ratio=Math.max(596/img.width,325/img.height),dw=img.width*ratio,dh=img.height*ratio;c.drawImage(img,263+(596-dw)/2,335+(325-dh)/2,dw,dh)}
+else{const lg=c.createLinearGradient(263,335,859,660);lg.addColorStop(0,"#e3ebef");lg.addColorStop(1,"#d5e0e4");c.fillStyle=lg;c.fillRect(263,335,596,325);line(c,561,470,"♥",92,"#a6b8ad",800);line(c,561,557,"A SUA AJUDA FAZ",30,"#365b45",850);line(c,561,603,"A DIFERENÇA!",35,"#365b45",900)}c.restore();
+heart(c,180,482,2.1,"#315b3a",true);heart(c,953,445,1.6,gold);heart(c,900,523,1.4,gold);
+const intro=(data.intro||"").trim(),need=(data.need||"").trim();
+const paragraphs=[intro,need].filter(Boolean);
+const availableHeight=268,maxWidth=926;
+let font=29,rows=[],lh=37;
+while(font>=20){lh=Math.round(font*1.3);rows=paragraphs.map(p=>wrap(c,p,maxWidth,10,font,600));const needed=rows.reduce((n,a)=>n+a.length*lh,0)+(paragraphs.length-1)*19;if(needed<=availableHeight)break;font--}
+let y=731;
+for(let i=0;i<rows.length;i++){for(const segment of rows[i]){line(c,98,y,segment,font,"#314b3b",600,"left");y+=lh;}if(i<rows.length-1)y+=19;}
+round(c,85,1035,952,106,22,"#fff","#e2d1ac",2);round(c,102,1042,90,90,45,"#2c5932");line(c,147,1087,"◆",56,"#fff",800);
+line(c,244,1058,"CHAVE PIX",23,green,900,"left");
+round(c,240,1078,762,46,13,"#fff","#dfe3d9",2);const pix=(data.pix||"CHAVE PIX DA CAMPANHA").trim();
+textBlock(c,pix,257,1100,722,1,fit(c,pix,720,25,700),27,700,"#314b3b");
+round(c,85,1153,952,106,22,"#fff","#e2d1ac",2);round(c,102,1161,90,90,45,"#2c5932");line(c,147,1206,"☎",52,"#fff",800);
+line(c,244,1177,"WHATSAPP",23,green,900,"left");round(c,240,1197,762,46,13,"#fff","#dfe3d9",2);
+const tel=(data.whatsapp||"WHATSAPP PARA CONTATO").trim();textBlock(c,tel,257,1220,722,1,25,28,700,"#314b3b");
+const grad=c.createLinearGradient(180,0,942,0);grad.addColorStop(0,"#efb03c");grad.addColorStop(1,"#cf891b");round(c,178,1274,766,94,50,grad);heart(c,292,1320,1.4,"#fff");line(c,625,1322,"DOE E COMPARTILHE",44,"#fff",900);
+line(c,561,1387,"Feito por GEB Tecnologia",20,"#365a49",500);
 }
 async function loadImage(src){if(!src)return null;return await new Promise(resolve=>{const im=new Image();im.crossOrigin="anonymous";im.onload=()=>resolve(im);im.onerror=()=>resolve(null);im.src=src;setTimeout(()=>resolve(null),8000)})}
 async function render(data){const canvas=document.createElement("canvas");canvas.width=W;canvas.height=H;const c=canvas.getContext("2d");drawPoster(c,data,await loadImage(data.image));return canvas}

@@ -82,7 +82,7 @@ $("copyPix").addEventListener("click",async()=>{
  }
  const btn=$("copyPix");btn.textContent="✓ Chave Pix copiada!";setTimeout(()=>btn.textContent="⧉ Copiar chave Pix",2400);
 });
-$("shareBtn").addEventListener("click",async()=>{const share={title:current.title,text:"Conheça esta campanha solidária e ajude a compartilhar.",url:location.href};if(navigator.share){try{await navigator.share(share);return}catch(e){if(e.name==="AbortError")return}}try{await navigator.clipboard.writeText(location.href);$("shareBtn").textContent="✓ Link copiado";setTimeout(()=>$("shareBtn").textContent="↗ Compartilhar campanha",2200)}catch(e){prompt("Copie o link da campanha:",location.href)}});
+$("shareBtn").addEventListener("click",async()=>{const message="Ajude o Edimar! Após enfrentar episódios de AVC, ele precisa de apoio para cuidados e medicamentos. Conheça sua história e, se puder, contribua ou compartilhe esta campanha. Antes de doar, confirme com o responsável se a arrecadação continua vigente.";const share={title:current.title,text:message,url:location.href};if(navigator.share){try{await navigator.share(share);return}catch(e){if(e.name==="AbortError")return}}try{await navigator.clipboard.writeText(message+"\n\n"+location.href);$("shareBtn").textContent="✓ Mensagem copiada";setTimeout(()=>$("shareBtn").textContent="↗ Compartilhar campanha",2200)}catch(e){prompt("Copie a mensagem da campanha:",message+"\n\n"+location.href)}});
 window.posterWidget=window.GEBVaquinhaArte.attach({container:"posterPreview",button:"downloadPoster",getData:()=>current});
 apply(current);
 window.posterWidget.refresh();

@@ -26,9 +26,9 @@ if($action==='checkout'){
  if(!preg_match('/^\d{10,13}$/',preg_replace('/\D/','',$data['whatsapp'])))respond(['error'=>'WhatsApp inválido'],400);
  if($data['image']!==''&&!filter_var($data['image'],FILTER_VALIDATE_URL))respond(['error'=>'Imagem inválida'],400);
  if($data['image']!==''&&strtolower(parse_url($data['image'],PHP_URL_SCHEME)??'')!=='https')respond(['error'=>'Imagem deve usar HTTPS'],400);
- $id=bin2hex(random_bytes(16));$order=['data'=>$data,'paid'=>false,'created'=>time(),'price'=>1000];saveorder($id,$order);
+ $id=bin2hex(random_bytes(16));$consentToken=bin2hex(random_bytes(24));$order=['data'=>$data,'paid'=>false,'created'=>time(),'price'=>1000,'listing'=>null,'consent_hash'=>hash('sha256',$consentToken)];saveorder($id,$order);
  $origin='https://site.compassrosesystems.com.br';
- $payment=api('links',['handle'=>$handle,'items'=>[['quantity'=>1,'price'=>1000,'description'=>'Criacao de campanha solidaria']],'order_nsu'=>$id,'redirect_url'=>$origin.'/vaquinha/pagamento/?pedido='.$id,'webhook_url'=>$origin.'/api/infinitepay/index.php?action=webhook']);
+ $payment=api('links',['handle'=>$handle,'items'=>[['quantity'=>1,'price'=>1000,'description'=>'Criacao de campanha solidaria']],'order_nsu'=>$id,'redirect_url'=>$origin.'/vaquinha/pagamento/?pedido='.$id.'&consent_token='.$consentToken,'webhook_url'=>$origin.'/api/infinitepay/index.php?action=webhook']);
  $url=$payment['url']??$payment['link']??'';
  if(!is_string($url)||!filter_var($url,FILTER_VALIDATE_URL)||parse_url($url,PHP_URL_SCHEME)!=='https')respond(['error'=>'Não foi possível gerar checkout'],502);
  respond(['checkout_url'=>$url,'order_nsu'=>$id]);
@@ -45,6 +45,34 @@ if($action==='status'){
  $tx=(string)($_GET['transaction_nsu']??'');$slug=(string)($_GET['slug']??'');
  if($tx!==''&&$slug!==''&&verify($id,$tx,$slug))respond(['paid'=>true,'url'=>'https://site.compassrosesystems.com.br/vaquinha/minhacampanha/?campanha='.$id]);
  respond(['paid'=>false]);
+}
+if($action==='consent'){
+ if($_SERVER['REQUEST_METHOD']!=='POST')respond(['error'=>'Método inválido'],405);
+ $body=postjson();$id=(string)($body['pedido']??'');$token=(string)($body['consent_token']??'');$choice=$body['publish']??null;
+ $o=loadorder($id);
+ if(($o['paid']??false)!==true)respond(['error'=>'Pagamento não confirmado'],403);
+ if(!is_bool($choice))respond(['error'=>'Escolha obrigatória'],400);
+ $hash=(string)($o['consent_hash']??'');
+ if($hash===''||!hash_equals($hash,hash('sha256',$token)))respond(['error'=>'Autorização inválida'],403);
+ if(($o['listing']??null)!==null)respond(['ok'=>true,'listing'=>$o['listing'],'already_set'=>true]);
+ $o['listing']=$choice;$o['consent_at']=gmdate('c');saveorder($id,$o);
+ respond(['ok'=>true,'listing'=>$choice]);
+}
+if($action==='listing'){
+ if($_SERVER['REQUEST_METHOD']!=='GET')respond(['error'=>'Método inválido'],405);
+ $term=mb_strtolower(trim((string)($_GET['q']??'')));
+ if(mb_strlen($term)>100)respond(['error'=>'Busca muito longa'],400);
+ $result=[];
+ foreach(glob($dir.'/*.json')?:[] as $file){
+   $v=json_decode((string)file_get_contents($file),true);
+   if(!is_array($v)||($v['paid']??false)!==true||($v['listing']??null)!==true)continue;
+   $d=$v['data']??[];$title=(string)($d['title']??'');$intro=(string)($d['intro']??'');
+   $hay=mb_strtolower($title.' '.$intro.' '.(string)($d['need']??'').' '.(string)($d['story']??''));
+   if($term!==''&&mb_strpos($hay,$term)===false)continue;
+   $result[]=['id'=>basename($file,'.json'),'title'=>$title,'intro'=>mb_substr($intro,0,220),'image'=>(string)($d['image']??''),'created'=>(int)($v['created']??0)];
+ }
+ usort($result,fn($a,$b)=>$b['created']<=>$a['created']);
+ respond(['campaigns'=>array_slice($result,0,100)]);
 }
 if($action==='campaign'){
  $o=loadorder((string)($_GET['id']??''));

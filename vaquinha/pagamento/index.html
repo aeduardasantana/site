@@ -1,8 +1,49 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Confirmando pagamento | Minha Campanha</title><style>body{font-family:system-ui;background:#F7F4EC;color:#245C4A;display:grid;place-items:center;min-height:100vh;margin:0}.card{background:white;border-radius:24px;max-width:530px;margin:18px;padding:35px;text-align:center;box-shadow:0 16px 60px #245C4A18}a{color:white;background:#245C4A;padding:13px 22px;border-radius:12px;display:inline-block;text-decoration:none;font-weight:700}p{line-height:1.7}</style></head><body><div class="card"><h1>Confirmando seu pagamento</h1><p id="status">Aguarde enquanto verificamos a confirmação diretamente com a InfinitePay.</p><a id="campaign" hidden>Ver minha campanha</a><p id="retry" hidden>Se você pagou recentemente, aguarde alguns instantes e atualize esta página.</p></div><script>
-const q=new URLSearchParams(location.search);
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sua campanha solidária | GEB Tecnologia</title><style>
+*{box-sizing:border-box}body{font-family:system-ui,-apple-system,sans-serif;background:radial-gradient(circle at 95% 5%,#dce9da,transparent 40%),#F7F4EC;color:#263b35;min-height:100dvh;margin:0;display:grid;place-items:center;padding:20px}
+.card{background:white;border:1px solid #d3e1d3;border-radius:26px;width:min(100%,650px);padding:clamp(22px,5vw,42px);text-align:center;box-shadow:0 16px 60px #245C4A18}
+.heart{display:grid;place-items:center;background:#e1ebdd;color:#245c4a;border-radius:18px;width:62px;height:62px;margin:0 auto 20px;font-size:30px}h1{font-size:clamp(28px,5vw,38px);letter-spacing:-.04em;margin:0 0 13px;color:#245c4a}p{line-height:1.65;color:#516b5d}
+label{display:block;text-align:left;font-weight:750;font-size:13px;margin:25px 0 8px}
+input{width:100%;border:1px solid #a8c4af;background:#f5f8f2;color:#263b35;border-radius:12px;padding:15px;font:inherit;font-size:14px}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:15px}.button{border:0;background:#245c4a;color:white;padding:14px 17px;border-radius:12px;min-height:50px;font-weight:800;text-decoration:none;font:inherit;font-weight:750;cursor:pointer;display:grid;place-items:center}
+.button.secondary{background:white;border:1px solid #a8c4af;color:#245c4a}.share{width:100%;margin-top:12px}
+.warning{background:#fff5db;border:1px solid #e9d4a0;border-radius:15px;padding:15px;text-align:left;margin-top:20px;color:#554423;font-size:13px;line-height:1.6}
+.warning strong{display:block;margin-bottom:4px}#ready[hidden],#retry[hidden]{display:none!important}small{display:block;margin-top:20px;color:#61776a}
+@media(max-width:540px){.actions{grid-template-columns:1fr}}
+</style></head><body><div class="card"><div class="heart" aria-hidden="true">♥</div>
+<h1 id="heading">Confirmando seu pagamento</h1><p id="status" role="status">Aguarde enquanto verificamos o pagamento com a InfinitePay.</p>
+<div id="ready" hidden><label for="url">Link exclusivo da sua campanha</label><input id="url" readonly aria-label="Link para compartilhar sua campanha">
+<div class="actions"><button class="button" id="copy" type="button">⧉ Copiar link</button><a class="button secondary" id="open" target="_blank" rel="noopener noreferrer">↗ Abrir campanha</a></div>
+<button class="button secondary share" id="share" type="button">Compartilhar campanha</button>
+<div class="warning"><strong>⚠ Atenção: guarde seu link!</strong>Salve este endereço nos favoritos ou envie para seu WhatsApp ou e-mail. Você precisará dele para compartilhar a campanha novamente.</div></div>
+<div id="retry" hidden><p>Se acabou de pagar, aguarde alguns instantes e atualize esta página.</p><button type="button" class="button share" id="again">Verificar novamente</button></div>
+<small>Vaquinha Online · Desenvolvido por GEB Tecnologia</small></div>
+<script>
+const q=new URLSearchParams(location.search);let campaignUrl='';
+const status=document.getElementById('status'),ready=document.getElementById('ready'),retry=document.getElementById('retry');
 async function check(){
-const p=q.get('pedido')||q.get('order_nsu');if(!p){document.getElementById('status').textContent='Pedido não identificado.';return;}
-const s=new URLSearchParams({action:'status',pedido:p,transaction_nsu:q.get('transaction_nsu')||'',slug:q.get('slug')||''});
-try{const r=await fetch('/api/infinitepay/index.php?'+s);const j=await r.json();if(j.paid&&j.url){document.getElementById('status').textContent='Pagamento confirmado! Sua campanha está pronta.';const a=document.getElementById('campaign');a.href=j.url;a.hidden=false;}else{document.getElementById('status').textContent='Ainda não recebemos a confirmação do pagamento.';document.getElementById('retry').hidden=false;}}catch(e){document.getElementById('status').textContent='Não foi possível consultar o pagamento agora. Tente novamente.';document.getElementById('retry').hidden=false;}}
+ const id=q.get('pedido')||q.get('order_nsu');
+ if(!id){status.textContent='Pedido não identificado. Confira o link de retorno.';return;}
+ status.textContent='Consultando a confirmação do pagamento...';retry.hidden=true;
+ const s=new URLSearchParams({action:'status',pedido:id,transaction_nsu:q.get('transaction_nsu')||'',slug:q.get('slug')||''});
+ try{
+  const r=await fetch('/api/infinitepay/index.php?'+s,{cache:'no-store'});const j=await r.json();
+  if(j.paid&&j.url){
+   campaignUrl=new URL(j.url,location.origin).href;
+   document.getElementById('heading').textContent='Sua vaquinha está pronta!';
+   status.textContent='Pagamento confirmado! Copie, salve e compartilhe seu link exclusivo.';
+   document.getElementById('url').value=campaignUrl;document.getElementById('open').href=campaignUrl;
+   ready.hidden=false;retry.hidden=true;
+  }else{status.textContent='Ainda não recebemos a confirmação do pagamento.';retry.hidden=false;}
+ }catch(e){status.textContent='Não foi possível consultar o pagamento agora.';retry.hidden=false;}
+}
+document.getElementById('again').addEventListener('click',check);
+document.getElementById('copy').addEventListener('click',async()=>{
+ try{await navigator.clipboard.writeText(campaignUrl);document.getElementById('copy').textContent='✓ Link copiado';}
+ catch(e){document.getElementById('url').select();document.execCommand('copy');document.getElementById('copy').textContent='✓ Link selecionado';}
+});
+document.getElementById('share').addEventListener('click',async()=>{
+ if(navigator.share){try{await navigator.share({title:'Minha campanha solidária',url:campaignUrl});return;}catch(e){if(e.name==='AbortError')return;}}
+ try{await navigator.clipboard.writeText(campaignUrl);document.getElementById('share').textContent='✓ Link copiado';}catch(e){document.getElementById('url').select();}
+});
 check();
 </script></body></html>

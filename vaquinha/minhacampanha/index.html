@@ -40,6 +40,17 @@
 .preview-pix{padding:13px;border-radius:10px;background:#f5f8f2;word-break:break-all;font-weight:700;font-size:clamp(13px,1.8vw,17px)}
 .preview-notice{padding:12px 0}.preview-buttons{display:flex;gap:12px;flex-wrap:wrap}.preview-buttons>*{flex:1;min-width:180px}
 @media(max-width:680px){.preview-hero,.preview-body{grid-template-columns:1fr}.preview-image{max-height:260px}.preview-buttons{flex-direction:column}.preview-buttons>*{width:100%}}
+</style><style>
+/* Acabamento bege/dourado restrito à moldura e à etapa de pagamento. */
+.checkout-preview{border:2px solid #D7B779;box-shadow:0 10px 30px rgba(215,183,121,.12)}
+.preview-page{border:1px solid #E9D4A0;box-shadow:0 12px 32px rgba(215,183,121,.10)}
+.preview-payment{background:#FFF5DB;border:1px solid #E9D4A0;border-radius:16px;padding:clamp(16px,2.5vw,22px);margin-top:22px;color:#554423}
+.preview-payment-label{font-size:12px;font-weight:800;letter-spacing:.085em;color:#725A24}
+.preview-payment-price{font-size:clamp(26px,3vw,34px);font-weight:850;letter-spacing:-.04em;margin:6px 0}
+.preview-payment-price span{font-size:14px;font-weight:600;letter-spacing:normal}
+.preview-payment .preview-notice{margin:8px 0 18px;line-height:1.6;color:#554423}
+.preview-payment .preview-buttons .primary{background:#245C4A;color:white}
+.preview-payment .preview-buttons .secondary{border-color:#D7B779;color:#245C4A}
 </style></head>
 <body>
 <header class="top"><div class="wrap"><div class="logo"><span aria-hidden="true">♥</span> Vaquinha solidária</div><small>Juntos fazemos a diferença</small></div></header>
@@ -56,8 +67,8 @@
  <div class="preview-hero"><div><span class="section-tag">Campanha solidária</span><h3 id="pvTitle"></h3><p id="pvIntro"></p></div><div class="preview-image"><img id="pvImage" alt="Imagem da campanha" hidden><span id="pvFallback">A SUA AJUDA FAZ A DIFERENÇA!</span></div></div>
  <div class="preview-body"><div><span class="section-tag">Nossa história</span><div class="need"><strong>Por que precisamos de ajuda?</strong><p id="pvNeed"></p></div><p id="pvStory" class="preview-story"></p></div><aside class="preview-donation"><strong>♥ Contribua diretamente por Pix</strong><p>Chave Pix da campanha</p><div id="pvPix" class="preview-pix"></div><p>Contato pelo WhatsApp: <strong id="pvWhatsapp"></strong></p></aside></div>
 </div>
-<p class="preview-notice">Esta é uma prévia gratuita. Ao aprovar, você será encaminhado ao checkout da InfinitePay. A página pública só será liberada após a confirmação do pagamento.</p>
-<div class="preview-buttons"><button type="button" class="secondary" id="editPreview">← Corrigir informações</button><button id="approvePayment" type="button" class="primary">Aprovar e pagar R$ 10,00</button></div>
+<div class="preview-payment"><div class="preview-payment-label">PUBLICAÇÃO DA PÁGINA PERSONALIZADA</div><div class="preview-payment-price">R$ 10,00 <span>pagamento único</span></div><p class="preview-notice">A pré-visualização é gratuita. Ao aprovar, você será encaminhado ao checkout seguro da InfinitePay. Sua página será liberada após a confirmação do pagamento.</p>
+<div class="preview-buttons"><button type="button" class="secondary" id="editPreview">← Corrigir informações</button><button id="approvePayment" type="button" class="primary">Aprovar e pagar R$ 10,00</button></div></div>
 </section><div id="generated" class="generated hidden" aria-live="polite"><h3>Sua vaquinha está pronta para compartilhar</h3><p>Copie o endereço abaixo ou abra a página final. A URL contém os dados informados; não inclua informações sigilosas. Guarde o link para reutilizar.</p><input id="generatedUrl" readonly aria-label="URL da vaquinha"><div class="actions"><button class="primary" id="copyUrl" type="button">Copiar link</button><a id="openUrl" class="secondary" target="_blank" rel="noopener">Abrir minha vaquinha ↗</a></div></div><p class="demo-note">As doações vão diretamente à chave Pix da campanha. A taxa de R$ 10,00 é cobrada uma única vez pela criação da página.</p></div></section>
 </main><section class="result-screen" id="resultScreen" role="dialog" aria-modal="true" aria-labelledby="resultTitle" hidden><div class="result-card"><div class="result-icon" aria-hidden="true">♥</div><span class="section-tag">Sua campanha solidária</span><h2 id="resultTitle">Sua vaquinha está pronta!</h2><p class="lead">Este é o endereço exclusivo da sua campanha. Copie, salve e compartilhe com as pessoas que desejam ajudar.</p><label class="url-label" for="finalLink">Link da sua campanha</label><input id="finalLink" readonly aria-label="Link exclusivo da campanha"><div class="result-actions"><button class="primary" id="finalCopy" type="button">⧉ Copiar link</button><a id="finalOpen" class="secondary" target="_blank" rel="noopener noreferrer">↗ Abrir campanha</a></div><button class="secondary full" type="button" id="finalShare">Compartilhar campanha</button><div class="result-warning" role="note"><strong>⚠ Atenção: guarde seu link!</strong>Não temos cadastro nem sistema de recuperação. Se você perder este endereço, não será possível recuperar sua campanha. Salve nos favoritos e envie para seu WhatsApp ou e-mail. O link contém todos os dados da campanha.</div><button class="back" id="backCreate" type="button">Voltar para editar os dados</button><div class="result-brand">Vaquinha Online · Desenvolvido por GEB Tecnologia</div></div></section>
 <footer class="footer"><div class="wrap">Vaquinha Online · Campanha Solidária <strong>│</strong> Desenvolvido por <a href="https://gebtecnologia.grupoeduardabispo.com.br/" target="_blank" rel="noopener noreferrer"><strong>Compass Rose Systems · GEB Tecnologia</strong></a></div></footer>

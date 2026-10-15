@@ -11,12 +11,19 @@ input{width:100%;border:1px solid #a8c4af;background:#f5f8f2;color:#263b35;borde
 @media(max-width:540px){.actions{grid-template-columns:1fr}}
 </style></head><body><div class="card"><div class="heart" aria-hidden="true">♥</div>
 <h1 id="heading">Confirmando seu pagamento</h1><p id="status" role="status">Aguarde enquanto verificamos o pagamento com a InfinitePay.</p>
-<div id="ready" hidden><label for="url">Link exclusivo da sua campanha</label><input id="url" readonly aria-label="Link para compartilhar sua campanha">
+<section id="consent" hidden style="text-align:left;border:1px solid #d7b779;background:#fff9e9;padding:20px;border-radius:16px;margin:18px 0">
+<h2 style="font-size:21px;color:#245c4a;margin:0 0 10px">Deseja divulgar sua campanha no catálogo público?</h2>
+<p>Escolha obrigatória após o pagamento. Autorizar permite encontrar sua campanha por título e palavras da história. Não autorizar mantém sua página disponível somente para quem tem o link. Você decide livremente.</p>
+<label style="display:flex;align-items:start;gap:10px;margin:12px 0;font-weight:500"><input type="radio" name="publish" value="yes" style="width:auto;margin-top:5px"> Sim, autorizo a divulgação no catálogo público.</label>
+<label style="display:flex;align-items:start;gap:10px;margin:12px 0;font-weight:500"><input type="radio" name="publish" value="no" style="width:auto;margin-top:5px"> Não, prefiro compartilhar apenas pelo link.</label>
+<button class="button share" id="saveConsent" type="button">Confirmar minha escolha</button>
+<p id="consentError" role="alert" style="color:#9b3d20"></p>
+</section><div id="ready" hidden><label for="url">Link exclusivo da sua campanha</label><input id="url" readonly aria-label="Link para compartilhar sua campanha">
 <div class="actions"><button class="button" id="copy" type="button">⧉ Copiar link</button><a class="button secondary" id="open" target="_blank" rel="noopener noreferrer">↗ Abrir campanha</a></div>
 <button class="button secondary share" id="share" type="button">Compartilhar campanha</button>
 <div class="warning"><strong>⚠ Atenção: guarde seu link!</strong>Salve este endereço nos favoritos ou envie para seu WhatsApp ou e-mail. Você precisará dele para compartilhar a campanha novamente.</div></div>
 <div id="retry" hidden><p>Se acabou de pagar, aguarde alguns instantes e atualize esta página.</p><button type="button" class="button share" id="again">Verificar novamente</button></div>
-<small>Vaquinha Online · Desenvolvido por GEB Tecnologia</small></div>
+<p><a href="/vaquinha/campanhas/" style="color:#245c4a">Encontrar campanhas publicadas</a></p><small>Vaquinha Online · Desenvolvido por GEB Tecnologia</small></div>
 <script>
 const q=new URLSearchParams(location.search);let campaignUrl='';
 const status=document.getElementById('status'),ready=document.getElementById('ready'),retry=document.getElementById('retry');
@@ -32,10 +39,32 @@ async function check(){
    document.getElementById('heading').textContent='Sua vaquinha está pronta!';
    status.textContent='Pagamento confirmado! Copie, salve e compartilhe seu link exclusivo.';
    document.getElementById('url').value=campaignUrl;document.getElementById('open').href=campaignUrl;
-   ready.hidden=false;retry.hidden=true;
+   retry.hidden=true;
+   if(sessionStorage.getItem('catalog-consent-'+id)==='done'){
+    ready.hidden=false;
+   }else{
+    document.getElementById('consent').hidden=false;
+    ready.hidden=true;
+   }
   }else{status.textContent='Ainda não recebemos a confirmação do pagamento.';retry.hidden=false;}
  }catch(e){status.textContent='Não foi possível consultar o pagamento agora.';retry.hidden=false;}
 }
+document.getElementById('saveConsent').addEventListener('click',async()=>{
+ const id=q.get('pedido')||q.get('order_nsu');
+ const selected=document.querySelector('input[name="publish"]:checked');
+ const error=document.getElementById('consentError');
+ if(!selected){error.textContent='Selecione uma das duas opções para continuar.';return;}
+ const token=q.get('consent_token');
+ if(!token){error.textContent='Não foi possível validar sua autorização. Abra a página de retorno original do checkout.';return;}
+ const btn=document.getElementById('saveConsent');btn.disabled=true;error.textContent='';
+ try{
+  const r=await fetch('/api/infinitepay/index.php?action=consent',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({pedido:id,consent_token:token,publish:selected.value==='yes'})});
+  const j=await r.json();if(!r.ok||!j.ok)throw Error(j.error||'Não foi possível salvar a escolha.');
+  sessionStorage.setItem('catalog-consent-'+id,'done');
+  document.getElementById('consent').hidden=true;ready.hidden=false;
+  status.textContent=j.listing?'Sua campanha está pronta e pode ser encontrada no catálogo público.':'Sua campanha está pronta e será acessível pelo link exclusivo.';
+ }catch(e){error.textContent=e.message;btn.disabled=false;}
+});
 document.getElementById('again').addEventListener('click',check);
 document.getElementById('copy').addEventListener('click',async()=>{
  try{await navigator.clipboard.writeText(campaignUrl);document.getElementById('copy').textContent='✓ Link copiado';}

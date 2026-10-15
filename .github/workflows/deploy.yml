@@ -14,6 +14,23 @@ jobs:
     steps:
       - name: Obter arquivos
         uses: actions/checkout@v4
+      - name: Configurar checkout e autenticação sem expor secrets
+        env:
+          INFINITEPAY_HANDLE: ${{ secrets.INFINITEPAY_HANDLE }}
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
+        run: |
+          if [ -z "$INFINITEPAY_HANDLE" ] || [ -z "$ADMIN_PASSWORD" ]; then
+            echo "Secrets INFINITEPAY_HANDLE e ADMIN_PASSWORD são necessários." >&2
+            exit 1
+          fi
+          mkdir -p api/infinitepay/_private api/infinitepay/_data
+          php -r '
+            $config = [
+              "handle" => getenv("INFINITEPAY_HANDLE"),
+              "admin_hash" => password_hash(getenv("ADMIN_PASSWORD"), PASSWORD_DEFAULT)
+            ];
+            file_put_contents("api/infinitepay/_private/config.php", "<?php return ".var_export($config, true).";");
+          '
       - name: Publicar via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:

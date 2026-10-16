@@ -46,3 +46,18 @@ jobs:
             **/node_modules/**
             **/README.md
             **/LICENSE
+
+      - name: Retirar Shopping provisório do domínio técnico
+        env:
+          FTP_HOST: ${{ secrets.HOST }}
+          FTP_USER: ${{ secrets.USER }}
+          FTP_PASS: ${{ secrets.PASS }}
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+          lftp -u "$FTP_USER","$FTP_PASS" "$FTP_HOST" <<'EOF'
+          set ftp:ssl-allow false
+          set net:max-retries 3
+          cd public_html/site
+          rm -f shopping/index.html
+          bye
+          EOF
